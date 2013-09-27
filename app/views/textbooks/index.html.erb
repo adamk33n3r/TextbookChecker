@@ -1,0 +1,37 @@
+<h1>Listing textbooks</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Authors</th>
+      <th>Edition</th>
+      <th>Price</th>
+      <th>Date</th>
+      <th>Isbn</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @textbooks.each do |textbook| %>
+      <tr>
+        <td><%= textbook.title %></td>
+        <td><%= textbook.authors %></td>
+        <td><%= textbook.edition %></td>
+        <td><%= textbook.price %></td>
+        <td><%= textbook.date %></td>
+        <td><%= textbook.isbn %></td>
+        <td><%= link_to 'Show', textbook %></td>
+        <td><%= link_to 'Edit', edit_textbook_path(textbook) %></td>
+        <td><%= link_to 'Destroy', textbook, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Textbook', new_textbook_path %>
