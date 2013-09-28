@@ -24,9 +24,9 @@
         <td><%= textbook.price %></td>
         <td><%= textbook.date %></td>
         <td><%= textbook.isbn %></td>
-        <td><%= link_to 'Show', textbook %></td>
-        <td><%= link_to 'Edit', edit_textbook_path(textbook) %></td>
-        <td><%= link_to 'Destroy', textbook, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td class="small_link"><%= link_to 'Show', textbook %></td>
+        <td class="small_link"><%= link_to 'Edit', edit_textbook_path(textbook) %></td>
+        <td class="small_link"><%= link_to 'Destroy', textbook, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

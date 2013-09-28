@@ -16,12 +16,16 @@
     <%= f.text_field :email %>
   </div>
   <div class="field">
-    <%= f.label :password_digest %><br>
-    <%= f.text_field :password_digest %>
+    <%= f.label :password %><br>
+    <%= f.text_field :password %>
   </div>
   <div class="field">
-    <%= f.label :year %><br>
-    <%= f.number_field :year %>
+    <%= f.label :password_confirmation %><br>
+    <%= f.text_field :password_confirmation %>
+  </div>
+  <div class="field">
+    <%= f.label :year, "Graduating Year" %><br>
+    <%= f.collection_select "year", (Time.now.year..Time.now.year + 6).to_a, :to_i, :to_i %>
   </div>
   <div class="field">
     <%= f.label :verified %><br>
