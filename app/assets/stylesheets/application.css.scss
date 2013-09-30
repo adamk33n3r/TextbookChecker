@@ -34,23 +34,17 @@ a {
 }
 
 div#header {
-  text-align: center;
-  width: 75%;
-  height: 100px;
-  font-size: 5em;
-  font-weight: bold;
+  position: relative;
   color: $dark_green;
+  height: 30px;
+  min-width: 320px;
+  width: 75%;
   margin: 0px auto;
   margin-top: -5px;
   border: 5px solid black;
   border-radius: 0 0 25px 25px;
   background-color: #bbb;
   transition: background-color 3s, color 2s;
-  div {
-    color: #bbb;
-    font-size: 16pt;
-    margin-top: -15px;
-  }
 }
 
 div#header:hover {
@@ -58,13 +52,65 @@ div#header:hover {
   color: #bbb;
 }
 
+div#header_content {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 1em;
+  font-weight: bold;
+  
+  div {
+    color: #bbb;
+    font-size: 16pt;
+    margin-top: -15px;
+  }
+}
+
+
+@media all and (min-width: 0px) {
+  div#header {
+    font-size: 2em;
+    height: 60px;
+  }
+}
+
+@media all and (min-width: 400px) {
+  div#header {
+    font-size: 2em;
+    height: 60px;
+  }
+}
+
+@media all and (min-width: 700px) {
+  div#header {
+    font-size: 3em;
+    height: 70px;
+  }
+}
+
+@media all and (min-width: 900px) {
+  div#header {
+    font-size: 4em;
+    height: 80px;
+  }
+}
+
+@media all and (min-width: 1100px) {
+  div#header {
+    font-size: 5em;
+    height: 100px;
+  }
+}
+
 div#body {
   background-color: #bbb;
   border: 5px solid black;
   width: 75%;
+  min-width: 320px;
   margin: 0px auto;
   margin-top: 25px;
-  /*padding: 10px 15px;*/
   border-radius: 25px;
   div#content {
     margin-left: 15px;
