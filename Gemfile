@@ -2,6 +2,12 @@ source 'https://rubygems.org'
 
 gem 'bcrypt-ruby'
 
+gem 'jquery-turbolinks'
+
+gem 'googlebooks'
+
+gem 'hashie'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.0'
 

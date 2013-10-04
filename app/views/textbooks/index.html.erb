@@ -24,7 +24,7 @@
         <td><%= textbook.price %></td>
         <td><%= textbook.date %></td>
         <td><%= textbook.isbn %></td>
-        <td class="small_link"><%= link_to 'Show', textbook %></td>
+        <td class="small_link"><%= link_to 'Show<br style="clear: both;"/>'.html_safe, textbook %></td>
         <td class="small_link"><%= link_to 'Edit', edit_textbook_path(textbook) %></td>
         <td class="small_link"><%= link_to 'Destroy', textbook, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
@@ -34,4 +34,5 @@
 
 <br>
 
-<%= link_to 'New Textbook', new_textbook_path %>
+<%= div_to 'New Textbook', new_textbook_path, :class => "small_link" %>
+<%= div_to 'Search for Textbook', search_textbooks_path, :class => "small_link" %>

@@ -13,6 +13,26 @@
  */
 $dark_green: #003300;
 
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: $dark_green;
+}
+
+div.error {
+  padding: 5px;
+  display: inline;
+  width: 35%;
+  color: #FF4444;
+  font-weight: bold;
+  background-color: #FFCCCC;
+  border: 2px solid #FF8888;
+  border-radius: 5px;
+}
+
 a {
   color: #bbb;
   text-decoration: none;
@@ -115,14 +135,6 @@ div#body {
   div#content {
     margin-left: 15px;
     margin-bottom: 10px;
+    display: inline-block;
   }
-}
-
-html, body {
-  margin: 0;
-  padding: 0;
-}
-
-body {
-  background-color: $dark_green;
 }

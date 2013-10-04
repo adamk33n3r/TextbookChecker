@@ -1,5 +1,5 @@
 require File.expand_path('../boot', __FILE__)
-
+Dir.glob("./lib/*.{rb}").each { |file| require file } # require each file from lib directory
 require 'rails/all'
 
 # Require the gems listed in Gemfile, including any gems

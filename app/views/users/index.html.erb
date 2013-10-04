@@ -4,9 +4,7 @@
   <thead>
     <tr>
       <th>Email</th>
-      <th>Password digest</th>
       <th>Year</th>
-      <th>Verified</th>
       <th></th>
       <th></th>
       <th></th>
@@ -17,12 +15,10 @@
     <% @users.each do |user| %>
       <tr>
         <td><%= user.email %></td>
-        <td><%= user.password_digest %></td>
         <td><%= user.year %></td>
-        <td><%= user.verified %></td>
-        <td><%= link_to 'Show', user %></td>
-        <td><%= link_to 'Edit', edit_user_path(user) %></td>
-        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= div_to 'Show', user, :class => "small_link" %></td>
+        <td><%= div_to 'Edit', edit_user_path(user), :class => "small_link" %></td>
+        <td><%= div_to 'Destroy', user, method: :delete, :class => "small_link", data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -30,4 +26,4 @@
 
 <br>
 
-<%= link_to 'New User', new_user_path %>
+<%= div_to 'New User', new_user_path, :class => "small_link" %>

@@ -59,8 +59,27 @@ class TextbooksController < ApplicationController
       format.json { head :no_content }
     end
   end
-
+  
+  def search
+    if params[:isbn]
+      @book_info = find params
+      @textbook = Textbook.new
+      @textbook.title = @book_info.title
+      @textbook.authors = @book_info.authors.join(", ")
+      @textbook.isbn = @book_info.industryIdentifiers[1].identifier
+      @textbook.description = @book_info.description
+      @textbook.image_url = @book_info.imageLinks.thumbnail
+    end
+  end
+  
   private
+  
+    def find(params)
+      response = HTTParty.get("https://www.googleapis.com/books/v1/volumes?q=isbn:" + params[:isbn] + "&key=AIzaSyDqJ6dEoT_kIbfBSV8ztbZOqzZCqRRQtQc&country=US")
+      book_hash = response["items"][0]["volumeInfo"]
+      Hashie::Mash.new book_hash
+    end
+  
     # Use callbacks to share common setup or constraints between actions.
     def set_textbook
       @textbook = Textbook.find(params[:id])

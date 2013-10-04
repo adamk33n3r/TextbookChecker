@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130927194002) do
+ActiveRecord::Schema.define(version: 20131004044544) do
 
   create_table "courses", force: true do |t|
     t.string   "title"
@@ -41,6 +41,8 @@ ActiveRecord::Schema.define(version: 20130927194002) do
     t.integer  "courses_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "description"
+    t.string   "image_url"
   end
 
   create_table "users", force: true do |t|
@@ -50,6 +52,7 @@ ActiveRecord::Schema.define(version: 20130927194002) do
     t.boolean  "verified"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "username"
   end
 
 end

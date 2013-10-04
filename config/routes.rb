@@ -2,7 +2,9 @@ Textbookchecker::Application.routes.draw do
   resources :professors
 
   resources :courses
-
+  
+  get '/textbooks/search', :to => 'textbooks#search', :as => :search_textbooks
+  #get '/textbooks/find' => 'textbooks#find', :as => :find_textbook
   resources :textbooks
 
   resources :users

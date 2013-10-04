@@ -25,9 +25,10 @@ class UsersController < ApplicationController
   # POST /users.json
   def create
     @user = User.new(user_params)
-
+    @user.username = @user.email.split('@')[0]
     respond_to do |format|
       if @user.save
+        UserMailer.verify_email(@user).deliver
         format.html { redirect_to @user, notice: 'User was successfully created.' }
         format.json { render action: 'show', status: :created, location: @user }
       else
@@ -64,11 +65,11 @@ class UsersController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
-      @user = User.find(params[:id])
+      @user = User.find_by_username(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:email, :password_digest, :year, :verified)
+      params.require(:user).permit(:email, :password, :password_confirmation, :year, :verified)
     end
 end
