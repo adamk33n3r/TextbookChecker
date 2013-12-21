@@ -14,3 +14,9 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
+
+# Ignore hidden files
+.*
+
+# Ignore Gemfile.lock
+Gemfile.lock

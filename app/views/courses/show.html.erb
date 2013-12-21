@@ -6,14 +6,15 @@
 </p>
 
 <p>
-  <strong>Call letters:</strong>
-  <%= @course.call_letters %>
+  <strong>Course Number:</strong>
+  <%= @course.letters %><%= @course.number %>
 </p>
-
-<p>
-  <strong>Number:</strong>
-  <%= @course.number %>
-</p>
+<p><strong>Professors that teach this course:</strong></p>
+<ul>
+  <% @course.professors.each do |prof| %>
+  <li><%= link_to prof, prof %></li>
+  <% end %>
+</ul>
 
 <%= link_to 'Edit', edit_course_path(@course) %> |
 <%= link_to 'Back', courses_path %>

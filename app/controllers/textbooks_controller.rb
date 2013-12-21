@@ -27,7 +27,7 @@ class TextbooksController < ApplicationController
     @textbook = Textbook.new(textbook_params)
     respond_to do |format|
       if @textbook.save
-        format.html { redirect_to @textbook, notice: 'Textbook was successfully created.' }
+        format.html { redirect_to @textbook, success: 'Textbook was successfully created.' }
         format.json { render action: 'show', status: :created, location: @textbook }
       else
         format.html { render action: 'new' }
@@ -63,12 +63,16 @@ class TextbooksController < ApplicationController
   def search
     if params[:isbn]
       @book_info = find params
-      @textbook = Textbook.new
-      @textbook.title = @book_info.title
-      @textbook.authors = @book_info.authors.join(", ")
-      @textbook.isbn = @book_info.industryIdentifiers[1].identifier
-      @textbook.description = @book_info.description
-      @textbook.image_url = @book_info.imageLinks.thumbnail
+      if @book_info
+        @textbook = Textbook.new
+        @textbook.title = @book_info.title
+        @textbook.authors = @book_info.authors.join(", ")
+        @textbook.isbn = @book_info.industryIdentifiers[1].identifier
+        @textbook.description = @book_info.description
+        @textbook.image_url = @book_info.imageLinks.thumbnail
+      else
+        flash.now[:danger] = "Invalid!"
+      end
     end
   end
   
@@ -76,8 +80,10 @@ class TextbooksController < ApplicationController
   
     def find(params)
       response = HTTParty.get("https://www.googleapis.com/books/v1/volumes?q=isbn:" + params[:isbn] + "&key=AIzaSyDqJ6dEoT_kIbfBSV8ztbZOqzZCqRRQtQc&country=US")
-      book_hash = response["items"][0]["volumeInfo"]
-      Hashie::Mash.new book_hash
+      if response["items"]
+        book_hash = response["items"][0]["volumeInfo"]
+        Hashie::Mash.new book_hash
+      end
     end
   
     # Use callbacks to share common setup or constraints between actions.

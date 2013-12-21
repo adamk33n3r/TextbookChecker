@@ -1,0 +1,21 @@
+<% provide(:title, "User Profile") %>
+
+<p>
+  <strong>Email:</strong>
+  <%= @user.email %>
+</p>
+
+<p>
+  <strong>Year:</strong>
+  <%= @user.year %>
+</p>
+
+<p>
+  <strong>Verified:</strong>
+  <%= @user.verified %>
+</p>
+<div class="btn-group">
+  <%= link_to 'Back', students_path, class: "btn btn-default" %>
+  <%= link_to 'Edit', edit_student_path(@user), class: "btn btn-warning" %>
+  <%= link_to 'Delete', student_path(@user), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger" %>
+</div>

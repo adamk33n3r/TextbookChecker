@@ -3,24 +3,42 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 /* Search View */
-
+/*
 div#content {
-  div#bk_img img {
-    margin: 5px 15px 0 0;
-    float: left;
+  div.small_link:active {
+    margin: -2px 2px 2px -2px;
+    box-shadow: 2px 2px;
+  }
+  div#bk_img {
+    img {
+      margin: 5px 15px 0 0;
+      float: left;
+      opacity: 1;
+      transition: opacity .3s;
+    }
+    img:hover {
+      opacity: .5;
+    }
   }
   div.bk_div {
     margin: 2px;
     div#bk_info {
-      div#bk_title {
+      a#bk_title {
+        color: black;
         font-weight: bold;
         font-size: 1.1em;
         text-decoration: underline;
+        transition: color .3s;
       }
       
+      a#bk_title:hover {
+        color: #555;
+      }
+        
       div#bk_authors {
-        text-decoration: italic;
+        font-style: italic;
       }
     }
   }
 }
+*/

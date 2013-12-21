@@ -1,17 +1,26 @@
 <p>Use this to search for a book in the system. If it doesn't exist yet, it will pull information about it to show.</p>
 <p>TODO:</p>
 <ul>
-  <li>Modularize the ajax stuff.</li>
-  <li>Put the ajax stuff in the textbooks#show</li>
-  <li>Make it look in database for isbn first</li>
+  <li>Should I use ajax or use form?</li>
+  <ul>
+    <li>Modularize the ajax stuff.</li>
+    <li>Put the ajax stuff in the textbooks#show</li>
+    <li>Make it look in database for isbn first</li>
+  </ul>
 </ul>
+<%
+=begin
+%>
 <%= label_tag :isbn_search, "ISBN Search:" %>
 <%= text_field_tag :isbn_search, "9780123750303", :style => "color: #bbb" %>
-<%= div_to 'Search', '#', :remote => true, :id => 'search_link', :class => "small_link" %>
-
+<%= link_to 'Search', '#', :remote => true, :id => 'search_link', :class => "small_link" %>
+<%
+=end
+%>
 <%= form_tag search_textbooks_path, :method => :get do %>
-  <%= text_field_tag :isbn, params[:isbn] %>
-  <%= submit_tag "Search" %>
+  <%= text_field_tag :isbn, params[:isbn] ? params[:isbn] : "9780123750303" %>
+  <%# submit_tag "Search" %>
+  <%= link_to 'Search', '#', :remote => true, :id => 'search_link', :class => "small_link" %>
 <% end %>
 
 <% if @textbook %>

@@ -1,0 +1,13 @@
+<% provide(:title, "Login") %>
+
+<%= form_tag sessions_path, class: "form", role: "form", style: "max-width:width:50%" do %>
+  <div class="form-group">
+    <%= label_tag :email, nil, class: "sr-only" %>
+    <%= text_field_tag :email, params[:email], placeholder: "Email", class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= label_tag :password, nil, class: "sr-only" %>
+    <%= password_field_tag :password, params[:password], placeholder: "Password", class: "form-control" %>
+  </div>
+  <%= submit_tag "Log In", class: 'btn btn-primary' %>
+<% end %>

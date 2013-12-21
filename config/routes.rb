@@ -4,12 +4,16 @@ Textbookchecker::Application.routes.draw do
   resources :courses
   
   get '/textbooks/search', :to => 'textbooks#search', :as => :search_textbooks
-  #get '/textbooks/find' => 'textbooks#find', :as => :find_textbook
   resources :textbooks
 
-  resources :users
+  resources :students
+  get 'signup', to: 'students#new'
   
-  root :to => 'main#index', :as => 'main'
+  resources :sessions, :only => [:new, :create, :destroy]
+  get 'login', to: 'sessions#new', as: 'login'
+  delete 'logout', to: 'sessions#destroy', as: 'logout'
+  
+  root :to => 'main#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

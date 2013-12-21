@@ -1,3 +1,8 @@
-<h1>Welcome!</h1>
-<%= div_to "Textbooks", textbooks_path, class: "small_link" %>
-<%= div_to "Users", users_path, class: "small_link" %>
+<% provide(:title, "Home") %>
+<%= image_tag "book.png", class: "pull-right" %>
+<h1>Welcome to TextbookChecker!</h1>
+<p>Do you ever wonder how much you'll need a textbook? Do you want to know if earlier versions still work?</p>
+<p>Then this is the site for you!</p>
+<p>Help us build the information up to help others!</p>
+<%= link_to "Sign Up", signup_path, class: "btn btn-primary" %>
+<%= link_to :Login, login_path, class: "btn btn-success" %>

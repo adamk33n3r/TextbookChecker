@@ -1,0 +1,144 @@
+
+---
+textbooks:
+  columns:
+  - id
+  - title
+  - authors
+  - edition
+  - price
+  - isbn
+  - description
+  - image_url
+  - published
+  - created_at
+  - updated_at
+  records: 
+  - - 1
+    - Brave New World
+    - Aldous Huxley
+    - '1'
+    - 9.99
+    - '9780060929879'
+    - This is a description of Brave New World
+    - http:/files.adam-keenan.net/Images/Geff2.gif
+    - 
+    - '2013-12-21 08:31:09.083281'
+    - '2013-12-21 08:31:09.083281'
+
+---
+courses:
+  columns:
+  - id
+  - title
+  - letters
+  - number
+  - created_at
+  - updated_at
+  records: 
+  - - 1
+    - Foundations of Christian Thought
+    - IAS
+    - 110
+    - '2013-12-21 08:31:08.827372'
+    - '2013-12-21 08:31:08.827372'
+
+---
+course_textbooks:
+  columns:
+  - id
+  - course_id
+  - textbook_id
+  - created_at
+  - updated_at
+  records: 
+  - - 1
+    - 1
+    - 1
+    - '2013-12-21 08:31:09.104201'
+    - '2013-12-21 08:31:09.104201'
+
+---
+professors:
+  columns:
+  - id
+  - first_name
+  - last_name
+  - department
+  - title
+  - created_at
+  - updated_at
+  records: 
+  - - 1
+    - Mark
+    - Cosgrove
+    - Phsychology
+    - Dr.
+    - '2013-12-21 08:31:08.989626'
+    - '2013-12-21 08:31:08.989626'
+
+---
+professor_courses:
+  columns:
+  - id
+  - professor_id
+  - course_id
+  - created_at
+  - updated_at
+  records: 
+  - - 1
+    - 1
+    - 1
+    - '2013-12-21 08:31:09.015577'
+    - '2013-12-21 08:31:09.015577'
+
+---
+students:
+  columns:
+  - id
+  - username
+  - email
+  - password_digest
+  - year
+  - verified
+  - admin
+  - created_at
+  - updated_at
+  records: 
+  - - 1
+    - adam_keenan
+    - adam_keenan@taylor.edu
+    - $2a$10$IPr4DCxrpXNJsYn9cWAJp.w/l/lkpmpCWpefEsisQ8/36GAUY8Yt.
+    - '2015-01-01'
+    - true
+    - true
+    - '2013-12-21 08:31:09.258219'
+    - '2013-12-21 08:31:09.258219'
+
+---
+votes:
+  columns:
+  - id
+  - method
+  records: 
+  - - 1
+    - Download
+
+---
+ratings:
+  columns:
+  - id
+  - content
+  - vote_id
+  - student_id
+  - course_textbook_id
+  - created_at
+  - updated_at
+  records: 
+  - - 1
+    - This is the content for the rating.
+    - 1
+    - 1
+    - 1
+    - '2013-12-21 08:31:09.428868'
+    - '2013-12-21 08:31:09.428868'

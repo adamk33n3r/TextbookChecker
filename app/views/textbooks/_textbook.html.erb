@@ -3,7 +3,7 @@
     <%= link_to image_tag(@textbook.image_url), @book_info.canonicalVolumeLink %>
   </div>
   <div id="bk_info">
-    <%= div_to @textbook.title, @book_info.canonicalVolumeLink, :color => "black", :id => "bk_title", :class => "small_link" %>
+    <%= link_to @textbook.title, @book_info.canonicalVolumeLink, :id => "bk_title" %>
     <div id="bk_authors">by <%= @textbook.authors %></div>
     <div id="bk_desc"><%= @textbook.description %></div>
   </div>

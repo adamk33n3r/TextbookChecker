@@ -24,12 +24,12 @@
     <%= f.text_field :edition %>
   </div>
   <div class="field">
-    <%= f.label :isbn %><br>
+    <%= f.label :isbn, "ISBN" %><br>
     <%= f.text_field :isbn %>
   </div>
   <div class="field">
-    <%= f.label :date %><br>
-    <%= f.date_select :date, :order => [:day, :month, :year], :start_year => 1800, :end_year => Time.now.year %>
+    <%= f.label :date_published %><br>
+    <%= f.date_select :date_published, :order => [:day, :month, :year], :start_year => 1800, :end_year => Time.now.year %>
   </div>
   <div class="field">
     <%= f.label :price %><br>

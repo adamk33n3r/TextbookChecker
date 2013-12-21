@@ -45,6 +45,11 @@ find_book = (isbn) ->
 $(document).ready ->
   if $('#search_link').length > 0
     console.log "Setting onClick for Search Button"
+    $('#search_link').click (event) ->
+      event.preventDefault()
+      console.log "clicked form submit"
+      $('form').submit();
+    return false
     input = $('#isbn_search');
     $('#search_link').click (event) ->
       event.preventDefault()
