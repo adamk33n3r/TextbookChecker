@@ -20,12 +20,16 @@
 
 <p>
   <strong>Date Published:</strong>
-  <%= @textbook.date_published %>
+  <%= @textbook.published %>
 </p>
 
 <p>
   <strong>ISBN:</strong>
   <%= @textbook.isbn %>
+</p>
+<p>
+  <strong>eBook:</strong>
+  <%= @textbook.is_ebook %>
 </p>
 <div class="small_link">
   <%= link_to 'Edit', edit_textbook_path(@textbook) %>

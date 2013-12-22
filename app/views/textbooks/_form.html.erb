@@ -1,4 +1,4 @@
-<%= form_for(@textbook) do |f| %>
+<%= bootstrap_form_for @textbook do |f| %>
   <% if @textbook.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@textbook.errors.count, "error") %> prohibited this textbook from being saved:</h2>
@@ -10,32 +10,13 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :title %><br>
+<%= f.text_field :isbn, create_label: false, label: "ISBN" %>
+  <% if params[:action] == 'edit' %>
     <%= f.text_field :title %>
-  </div>
-  <div class="field">
-    <%= f.label :authors %><br>
     <%= f.text_field :authors %>
-  </div>
-  <div class="field">
-    <%= f.label :edition %><br>
     <%= f.text_field :edition %>
-  </div>
-  <div class="field">
-    <%= f.label :isbn, "ISBN" %><br>
-    <%= f.text_field :isbn %>
-  </div>
-  <div class="field">
-    <%= f.label :date_published %><br>
-    <%= f.date_select :date_published, :order => [:day, :month, :year], :start_year => 1800, :end_year => Time.now.year %>
-  </div>
-  <div class="field">
-    <%= f.label :price %><br>
+    <%= f.date_field :published, max: Date.today, min: Date.new(1700) %>
     <%= f.text_field :price, :value => number_with_precision(f.object.price, :precision => 2) %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  <% end %>
+  <%= f.submit %>
 <% end %>

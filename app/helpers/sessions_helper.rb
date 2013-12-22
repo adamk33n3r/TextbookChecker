@@ -10,7 +10,7 @@ module SessionsHelper
   end
   
   def current_user
-    @current_user ||= Student.find_by_id(cookies.signed[:student_id])
+    @current_user ||= Student.find_by_id(cookies.signed[:user_id])
     @current_user
   end
   

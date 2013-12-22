@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131220090411) do
+ActiveRecord::Schema.define(version: 20131222020727) do
 
   create_table "course_textbooks", force: true do |t|
     t.integer  "course_id"
@@ -95,6 +95,7 @@ ActiveRecord::Schema.define(version: 20131220090411) do
     t.date     "published"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "is_ebook",    default: false
   end
 
   create_table "votes", force: true do |t|

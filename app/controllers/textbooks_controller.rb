@@ -1,5 +1,6 @@
 class TextbooksController < ApplicationController
   before_action :set_textbook, only: [:show, :edit, :update, :destroy]
+  before_action :ensure_user_logged_in
 
   # GET /textbooks
   # GET /textbooks.json
@@ -25,6 +26,14 @@ class TextbooksController < ApplicationController
   # POST /textbooks.json
   def create
     @textbook = Textbook.new(textbook_params)
+    @book_info = TextbooksHelper.find_book textbook_params[:isbn]
+    if @book_info
+      @textbook = TextbooksHelper.build_book @book_info
+    else
+      flash.now[:danger] = "Invalid ISBN."
+      render :new
+      return
+    end
     respond_to do |format|
       if @textbook.save
         format.html { redirect_to @textbook, success: 'Textbook was successfully created.' }
@@ -62,14 +71,9 @@ class TextbooksController < ApplicationController
   
   def search
     if params[:isbn]
-      @book_info = find params
+      @book_info = TextbooksHelper.find_book params[:isbn]
       if @book_info
-        @textbook = Textbook.new
-        @textbook.title = @book_info.title
-        @textbook.authors = @book_info.authors.join(", ")
-        @textbook.isbn = @book_info.industryIdentifiers[1].identifier
-        @textbook.description = @book_info.description
-        @textbook.image_url = @book_info.imageLinks.thumbnail
+        @textbook = TextbooksHelper.build_book @book_info
       else
         flash.now[:danger] = "Invalid!"
       end
@@ -78,14 +82,6 @@ class TextbooksController < ApplicationController
   
   private
   
-    def find(params)
-      response = HTTParty.get("https://www.googleapis.com/books/v1/volumes?q=isbn:" + params[:isbn] + "&key=AIzaSyDqJ6dEoT_kIbfBSV8ztbZOqzZCqRRQtQc&country=US")
-      if response["items"]
-        book_hash = response["items"][0]["volumeInfo"]
-        Hashie::Mash.new book_hash
-      end
-    end
-  
     # Use callbacks to share common setup or constraints between actions.
     def set_textbook
       @textbook = Textbook.find(params[:id])
@@ -93,10 +89,6 @@ class TextbooksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def textbook_params
-      p = params.require(:textbook).permit(:title, :authors, :edition, :price, :date, :isbn)
-      p[:title] = p[:title].titleize
-      p[:authors] = p[:authors].titleize
-      p[:edition] = p[:edition].titleize
-      p
+      params.require(:textbook).permit(:isbn)
     end
 end

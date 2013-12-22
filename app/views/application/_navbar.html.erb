@@ -11,12 +11,11 @@
   <div class="collapse navbar-collapse navbar-ex1-collapse">
     <ul class="nav navbar-nav">
       <%= navbar_link "Home", root_path %>
-      <%= navbar_link "Students", students_path %>
-      <%= navbar_link "Textbooks", textbooks_path %>
-      <%= navbar_link "Professors", professors_path %>
-      <%= navbar_link "Courses", courses_path %>
       <% if logged_in? %>
-        
+        <%= navbar_link "Students", students_path %>
+        <%= navbar_link "Textbooks", textbooks_path %>
+        <%= navbar_link "Professors", professors_path %>
+        <%= navbar_link "Courses", courses_path %>
       <% else %>
         <li <% if current_page? signup_path %><%= 'class=active'%><% end %>><%= link_to "Sign Up", signup_path %></li>
         <li <% if current_page? login_path %><%= 'class=active'%><% end %>><%= link_to "Log In", login_path %></li>        

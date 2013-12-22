@@ -1,6 +1,4 @@
-<h1>Listing textbooks</h1>
-
-<table>
+<table class="table table-striped">
   <thead>
     <tr>
       <th>Title</th>
@@ -9,8 +7,7 @@
       <th>Price</th>
       <th>Date</th>
       <th>ISBN</th>
-      <th></th>
-      <th></th>
+      <th>eBook</th>
       <th></th>
     </tr>
   </thead>
@@ -22,8 +19,9 @@
         <td><%= textbook.authors %></td>
         <td><%= textbook.edition %></td>
         <td><%= textbook.price %></td>
-        <td><%= textbook.date_published %></td>
+        <td><%= textbook.published %></td>
         <td><%= textbook.isbn %></td>
+        <td><%= textbook.is_ebook %></td>
         <td class="small_link"><%= link_to 'Show<br style="clear: both;"/>'.html_safe, textbook %></td>
         <td class="small_link"><%= link_to 'Edit', edit_textbook_path(textbook) %></td>
         <td class="small_link"><%= link_to 'Destroy', textbook, method: :delete, data: { confirm: 'Are you sure?' } %></td>

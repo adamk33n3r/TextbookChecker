@@ -10,4 +10,10 @@ module ApplicationHelper
       link_to text, link, link_options
     end
   end
+  
+  def bootstrap_form_for(name, *args, &block)
+    options = args.extract_options!
+    options.merge!(builder: BootstrapFormBuilder, html: {class: "form-horizontal", role: :form})
+    form_for(name, *(args << options), &block)
+  end
 end
