@@ -1,39 +1,5 @@
-<p>
-  <strong>Title:</strong>
-  <%= @textbook.title %>
-</p>
-
-<p>
-  <strong>Authors:</strong>
-  <%= @textbook.authors %>
-</p>
-
-<p>
-  <strong>Edition:</strong>
-  <%= @textbook.edition %>
-</p>
-
-<p>
-  <strong>Price:</strong>
-  <%= number_to_currency(@textbook.price) %>
-</p>
-
-<p>
-  <strong>Date Published:</strong>
-  <%= @textbook.published %>
-</p>
-
-<p>
-  <strong>ISBN:</strong>
-  <%= @textbook.isbn %>
-</p>
-<p>
-  <strong>eBook:</strong>
-  <%= @textbook.is_ebook %>
-</p>
-<div class="small_link">
-  <%= link_to 'Edit', edit_textbook_path(@textbook) %>
-</div>
-<div class="small_link">
-  <%= link_to 'Back', textbooks_path %>
+<%= render @textbook %>
+<div class="btn-group">
+  <%= blink_to 'Back', textbooks_path, class: "btn-default btn-sm" %>
+  <%= blink_to 'Edit', edit_textbook_path(@textbook), class: "btn-warning btn-sm" %>
 </div>

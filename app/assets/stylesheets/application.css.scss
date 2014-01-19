@@ -15,9 +15,125 @@
 @import "variables";
 @import "bootstrap";
 
+.img-overlay {
+  position:absolute;
+  top:40%;
+  -webkit-transform: rotate(-45deg);
+  -mox-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+  font-size:30pt;
+  color:red;
+}
+
+.collapsing {
+  @extend .collapsing;
+  transition: height .25s linear;
+}
+
+
+.well > .row {
+  margin: 0 10px;
+}
+
+
+//table td { padding: 0;}
+div.table {
+  div.thead {
+    padding: 8px;
+  }
+  div.tbody > div.row {
+    border-top: 1px solid #ddd;
+    padding: 8px;
+    div {
+      white-space: nowrap;
+    }
+  }
+}
+
+
+
+.hide-cell {
+  -webkit-transition: padding .25s linear;
+  -moz-transition: padding .25s linear;
+  transition: padding .25s linear;
+  padding: 0 8px !important;
+}
+.show-cell {
+  @extend .hide-cell;
+  padding: 8px !important;
+}
+.rotate0 {
+  -webkit-transition: -webkit-transform .15s linear;
+  -webkit-transform: rotate(0deg);
+}
+
+.rotate90 {
+  @extend .rotate0;
+  -webkit-transform: rotate(90deg);
+}
+
+.rotate-90 {
+  @extend .rotate0;
+  -webkit-transform: rotate(-90deg);
+}
+
+/*
+ * Chevron Changing for Collapse
+ */
+/*
+:not(.collapsed) td span.glyphicon-chevron-right:before {
+  content: '\e114'
+}
+.collapsed td span.glyphicon-chevron-right:before {
+  content: '\e080'
+}
+*/
+// Cursor Pointer
+.pointer {
+  cursor: hand;
+  cursor: pointer;
+}
+
+/*
+ * Custom Alert-Group
+ */
+
+// Top
+.alert-group > .alert:first-child:not(:last-child) {
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+  margin-bottom: 0;
+}
+
+// Middle
+.alert-group > .alert:not(:first-child):not(:last-child) {
+  border-radius: 0;
+  margin-bottom: 0;
+}
+
+// Bottom
+.alert-group > .alert:last-child:not(:first-child) {
+  border-top-right-radius: 0;
+  border-top-left-radius: 0;
+}
+
+.dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus {
+  text-decoration: none;
+  color: white;
+  background-color: $brand-primary;
+}
+/*.btn-warning:hover {
+  background-color: lighten($btn-warning-bg, 10%);
+  border-color: lighten($btn-warning-border, 10%);
+}
+.btn-danger:hover {
+  background-color: lighten($btn-danger-bg, 10%);
+  border-color: lighten($btn-danger-border, 10%);
+}*/
 body {
   padding-top: 100px;
   background-image: image-url("backgrounds/groovepaper/groovepaper.png");
+  //background-image: image-url("backgrounds/brushed/brushed.png");
 }
 
 div#container {

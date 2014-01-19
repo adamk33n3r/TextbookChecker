@@ -1,4 +1,7 @@
-<%= render 'form' %>
-
-<%= link_to 'Show', @textbook %> |
-<%= link_to 'Back', textbooks_path %>
+<%= bootstrap_form_for @textbook do |f| %>
+  <%= render 'form', :f => f %>
+  <div class="btn-group">
+    <%= blink_to 'Back', @textbook %>
+    <%= f.submit class: "btn-primary" %>
+  </div>
+<% end %>

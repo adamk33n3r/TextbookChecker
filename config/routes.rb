@@ -5,6 +5,10 @@ Textbookchecker::Application.routes.draw do
   
   get '/textbooks/search', :to => 'textbooks#search', :as => :search_textbooks
   resources :textbooks
+  
+  resources :course_textbooks do
+    resources :ratings, shallow: true
+  end
 
   resources :students
   get 'signup', to: 'students#new'

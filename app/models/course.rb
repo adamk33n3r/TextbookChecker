@@ -9,4 +9,12 @@ class Course < ActiveRecord::Base
   has_many :textbooks, through: :course_textbooks
   
   validates_presence_of :title, :letters, :number
+  
+  def course
+    self.letters + self.number.to_s
+  end
+  
+  def to_s
+    self.course
+  end
 end

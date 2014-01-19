@@ -1,8 +1,8 @@
 class BootstrapFormBuilder < ActionView::Helpers::FormBuilder
 
   def text_field(label, args={})
-    puts args
-    puts @template.label(label, args[:label] ? args[:label] : label, class: "col-xs-1 control-label")
+    #puts args
+    #puts @template.label(label, args[:label] ? args[:label] : label, class: "col-xs-1 control-label")
     @template.content_tag("div",
       (args[:create_label] ? @template.label(label, (args[:label] ? args[:label] : label), class: "col-xs-1 control-label") : "").html_safe +
         @template.content_tag("div", super(label, args.merge(class: "form-control", placeholder: args[:label] ? args[:label] : label.to_s.humanize)), class: "col-xs-4"),
@@ -28,6 +28,8 @@ class BootstrapFormBuilder < ActionView::Helpers::FormBuilder
   def submit(args={})
     if args[:class]
       args[:class]+=" btn"
+    else
+      args[:class] = "btn"
     end
     super(args)
   end

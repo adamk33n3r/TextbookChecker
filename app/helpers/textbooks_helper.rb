@@ -18,6 +18,7 @@ module TextbooksHelper
     textbook.image_url = book_info.volumeInfo.imageLinks.thumbnail
     textbook.edition = "Unknown"
     textbook.is_ebook = book_info.saleInfo.isEbook
+    textbook.g_link = book_info.volumeInfo.canonicalVolumeLink
     textbook
   end
 end

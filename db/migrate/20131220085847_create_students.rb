@@ -4,9 +4,9 @@ class CreateStudents < ActiveRecord::Migration
       t.string :username
       t.string :email
       t.string :password_digest
-      t.date :year
-      t.boolean :verified
-      t.boolean :admin
+      t.integer :year
+      t.boolean :verified, default: false
+      t.boolean :admin, default: false
 
       t.timestamps
     end

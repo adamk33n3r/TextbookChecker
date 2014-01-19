@@ -1,7 +1,7 @@
 # Place all the behaviors and hooks related to the matching controller here.
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
-
+###
 find_book = (isbn) ->
   content = $('#content')
   if isbn isnt "" and isbn.length is 13 and parseInt(isbn, 10)
@@ -66,3 +66,4 @@ $(document).ready ->
           input.val default_value
           input.css('color', '#bbb')
     )
+###

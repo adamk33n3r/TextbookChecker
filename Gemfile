@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+gem "holder_rails"
+
 gem 'jquery-turbolinks'
 
 gem 'httparty'

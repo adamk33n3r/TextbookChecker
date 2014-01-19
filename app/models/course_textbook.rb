@@ -5,4 +5,8 @@ class CourseTextbook < ActiveRecord::Base
   has_many :ratings
   
   validates_presence_of :course, :textbook
+  
+  def to_s
+    self.course.to_s + " - " + self.textbook.to_s
+  end
 end

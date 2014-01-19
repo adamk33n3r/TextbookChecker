@@ -1,30 +1,23 @@
 
 ---
-textbooks:
+course_textbooks:
   columns:
   - id
-  - title
-  - authors
-  - edition
-  - price
-  - isbn
-  - description
-  - image_url
-  - published
+  - course_id
+  - textbook_id
   - created_at
   - updated_at
   records: 
   - - 1
-    - Brave New World
-    - Aldous Huxley
-    - '1'
-    - 9.99
-    - '9780060929879'
-    - This is a description of Brave New World
-    - http:/files.adam-keenan.net/Images/Geff2.gif
-    - 
-    - '2013-12-21 08:31:09.083281'
-    - '2013-12-21 08:31:09.083281'
+    - 1
+    - 1
+    - '2013-12-21 08:31:09.104201'
+    - '2013-12-21 08:31:09.104201'
+  - - 2
+    - 1
+    - 6
+    - '2014-01-19 07:50:04.496729'
+    - '2014-01-19 07:50:04.496729'
 
 ---
 courses:
@@ -42,21 +35,32 @@ courses:
     - 110
     - '2013-12-21 08:31:08.827372'
     - '2013-12-21 08:31:08.827372'
+  - - 2
+    - Principles of Human-Computer Interaction
+    - SYS
+    - 215
+    - '2014-01-19 07:52:48.731013'
+    - '2014-01-19 07:52:48.731013'
 
 ---
-course_textbooks:
+professor_courses:
   columns:
   - id
+  - professor_id
   - course_id
-  - textbook_id
   - created_at
   - updated_at
   records: 
   - - 1
     - 1
     - 1
-    - '2013-12-21 08:31:09.104201'
-    - '2013-12-21 08:31:09.104201'
+    - '2013-12-21 08:31:09.015577'
+    - '2013-12-21 08:31:09.015577'
+  - - 2
+    - 2
+    - 2
+    - '2014-01-19 21:42:56.526047'
+    - '2014-01-19 21:42:56.526047'
 
 ---
 professors:
@@ -76,53 +80,13 @@ professors:
     - Dr.
     - '2013-12-21 08:31:08.989626'
     - '2013-12-21 08:31:08.989626'
-
----
-professor_courses:
-  columns:
-  - id
-  - professor_id
-  - course_id
-  - created_at
-  - updated_at
-  records: 
-  - - 1
-    - 1
-    - 1
-    - '2013-12-21 08:31:09.015577'
-    - '2013-12-21 08:31:09.015577'
-
----
-students:
-  columns:
-  - id
-  - username
-  - email
-  - password_digest
-  - year
-  - verified
-  - admin
-  - created_at
-  - updated_at
-  records: 
-  - - 1
-    - adam_keenan
-    - adam_keenan@taylor.edu
-    - $2a$10$IPr4DCxrpXNJsYn9cWAJp.w/l/lkpmpCWpefEsisQ8/36GAUY8Yt.
-    - '2015-01-01'
-    - true
-    - true
-    - '2013-12-21 08:31:09.258219'
-    - '2013-12-21 08:31:09.258219'
-
----
-votes:
-  columns:
-  - id
-  - method
-  records: 
-  - - 1
-    - Download
+  - - 2
+    - Jennifer
+    - Shivers
+    - CSE
+    - Prof.
+    - '2014-01-19 21:42:56.516566'
+    - '2014-01-19 21:42:56.516566'
 
 ---
 ratings:
@@ -142,3 +106,162 @@ ratings:
     - 1
     - '2013-12-21 08:31:09.428868'
     - '2013-12-21 08:31:09.428868'
+
+---
+students:
+  columns:
+  - id
+  - username
+  - email
+  - password_digest
+  - year
+  - verified
+  - admin
+  - created_at
+  - updated_at
+  records: 
+  - - 1
+    - adam_keenan
+    - adam_keenan@taylor.edu
+    - $2a$10$IPr4DCxrpXNJsYn9cWAJp.w/l/lkpmpCWpefEsisQ8/36GAUY8Yt.
+    - 2015
+    - true
+    - true
+    - '2013-12-21 08:31:09.258219'
+    - '2013-12-21 08:31:09.258219'
+  - - 5
+    - josh_felker
+    - josh_felker@taylor.edu
+    - $2a$10$IdAFyLXfKtshxfYFyABe6Oq..TnK6DcTIi1oL65Q67Mpi1PLpR5by
+    - 2014
+    - false
+    - false
+    - '2014-01-12 06:50:40.886077'
+    - '2014-01-12 06:50:40.886077'
+  - - 6
+    - david_adams1
+    - david_adams1@taylor.edu
+    - $2a$10$6c2SlOtE3NJIKn8JOc/t3OmypdKDs3JupVJfmJA6vcK17O.q1Ac/e
+    - 2015
+    - false
+    - false
+    - '2014-01-15 06:12:06.382977'
+    - '2014-01-15 06:12:06.382977'
+
+---
+textbooks:
+  columns:
+  - id
+  - title
+  - authors
+  - edition
+  - price
+  - isbn
+  - description
+  - image_url
+  - published
+  - created_at
+  - updated_at
+  - is_ebook
+  - g_link
+  records: 
+  - - 1
+    - Brave New World
+    - Aldous Huxley
+    - Unknown
+    - 0.0
+    - '9780060929879'
+    - Huxley's classic prophetic novel describes the socialized horrors of a futuristic
+      utopia devoid of individual freedom
+    - http://bks6.books.google.com/books?id=5H46PcnDCYMC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api
+    - '1932-01-01'
+    - '2014-01-16 00:38:19.779875'
+    - '2014-01-18 05:18:57.525982'
+    - false
+    - http://books.google.com/books/about/Brave_New_World.html?hl=&id=5H46PcnDCYMC
+  - - 2
+    - Brave New World
+    - Aldous Huxley
+    - Unknown
+    - 9.99
+    - '9780795311253'
+    - Huxley’s bleak future prophesized in Brave New World was a capitalist civilization
+      which had been reconstituted through scientific and psychological engineering,
+      a world in which people are genetically designed to be passive and useful to
+      the ruling class. Satirical and disturbing, Brave New World is set some 600
+      years ahead, in “this year of stability, A.F. 632”--the A.F. standing for After
+      Ford, meaning the godlike Henry Ford. “Community, Identity, Stability,” is the
+      motto. Reproduction is controlled through genetic engineering, and people are
+      bred into a rigid class system. As they mature, they are conditioned to be happy
+      with the roles that society has created for them. The rest of their lives are
+      devoted to the pursuit of pleasure through sex, recreational sports, the getting
+      and having of material possessions, and taking a drug called Soma. Concepts
+      such as family, freedom, love, and culture are considered grotesque. Against
+      this backdrop, a young man known as John the Savage is brought to London from
+      the remote desert of New Mexico. What he sees in the new civilization a “brave
+      new world” (quoting Shakespeare’s The Tempest). However, ultimately, John challenges
+      the basic premise of this society in an act that threatens and fascinates its
+      citizens. Huxley uses his entire prowess to throw the idea of utopia into reverse,
+      presenting us what is known as the “dystopian” novel. When Brave New World was
+      written (1931), neither Hitler nor Stalin had risen to power. Huxley saw the
+      enduring threat to society from the dark side of scientific and social progress,
+      and mankind’s increasing appetite for simple amusement. Brave New World is a
+      work that indicts the idea of progress for progress sake and is backed up with
+      force and reason.
+    - http://bks5.books.google.com/books?id=niDNtZoYsAUC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api
+    - '2010-01-01'
+    - '2014-01-18 21:37:34.405683'
+    - '2014-01-19 21:49:51.150450'
+    - true
+    - http://books.google.com/books/about/Brave_New_World.html?hl=&id=niDNtZoYsAUC
+  - - 3
+    - A Swiftly Tilting Planet
+    - Madeleine L'Engle
+    - Unknown
+    - 0.0
+    - '9780312368609'
+    - Fifteen-year-old Charles Wallace and the unicorn Gaudior embark on a journey
+      through time and peril to prevent the destruction of the world by the mad dictator
+      Madog Branzillo. Simultaneous.
+    - http://bks4.books.google.com/books?id=yEBgkfSB4hsC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api
+    - '2007-01-01'
+    - '2014-01-14 08:34:35.244571'
+    - '2014-01-19 21:50:28.082121'
+    - false
+    - http://books.google.com/books/about/A_Swiftly_Tilting_Planet.html?hl=&id=yEBgkfSB4hsC
+  - - 4
+    - Designing With the Mind in Mind
+    - Jeff Johnson
+    - Unknown
+    - 0.0
+    - '9780123750303'
+    - Early user interface (UI) practitioners were trained in cognitive psychology,
+      from which UI design rules were based. But as the field evolves, designers enter
+      the field from many disciplines. Practitioners today have enough experience
+      in UI design that they have been exposed to design rules, but it is essential
+      that they understand the psychology behind the rules in order to effectively
+      apply them. In Designing with the Mind in Mind, Jeff Johnson, author of the
+      best selling GUI Bloopers, provides designers with just enough background in
+      perceptual and cognitive psychology that UI design guidelines make intuitive
+      sense rather than being just a list of rules to follow. * The first practical,
+      all-in-one source for practitioners on user interface design rules and why,
+      when and how to apply them. * Provides just enough background into the reasoning
+      behind interface design rules that practitioners can make informed decisions
+      in every project. * Gives practitioners the insight they need to make educated
+      design decisions when confronted with tradeoffs, including competing design
+      rules, time constrictions, or limited resources.
+    - http://bks0.books.google.com/books?id=FOEHlQEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api
+    - '2010-01-01'
+    - '2014-01-11 10:20:21.198833'
+    - '2014-01-19 21:50:39.914046'
+    - false
+    - http://books.google.com/books/about/Designing_With_the_Mind_in_Mind.html?hl=&id=FOEHlQEACAAJ
+
+---
+votes:
+  columns:
+  - id
+  - method
+  records: 
+  - - 1
+    - Download

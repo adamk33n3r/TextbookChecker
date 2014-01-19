@@ -4,7 +4,13 @@
 //$font-family-sans-serif: sans-serif;
 
 // Dropdown
+$dropdown-link-color:  #999;
+$dropdown-border:      darken(#222, 10%);
+$dropdown-bg:          #222;
 
-$dropdown-link-color: #999;
-$dropdown-border: darken(#222, 10%);
-$dropdown-bg: #222;
+// Colors
+$brand-primary:        #428bca;
+$brand-success:        #5cb85c;
+$brand-warning:        #f0ad4e;
+$brand-danger:         #d9534f;
+$brand-info:           #5bc0de;

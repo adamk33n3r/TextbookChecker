@@ -1,33 +1,4 @@
-<h1>Listing professors</h1>
+<%= bootstrap_table_for @professors, first: {"name"=>"to_s"}, exclusions: ["title", "first_name", "last_name"] %>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>First name</th>
-      <th>Last name</th>
-      <th>Department</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
 
-  <tbody>
-    <% @professors.each do |professor| %>
-      <tr>
-        <td><%= professor.title %></td>
-        <td><%= professor.first_name %></td>
-        <td><%= professor.last_name %></td>
-        <td><%= professor.department %></td>
-        <td><%= link_to 'Show', professor %></td>
-        <td><%= link_to 'Edit', edit_professor_path(professor) %></td>
-        <td><%= link_to 'Destroy', professor, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Professor', new_professor_path %>
+<%= blink_to 'New Professor', new_professor_path, class: "btn-primary" %>

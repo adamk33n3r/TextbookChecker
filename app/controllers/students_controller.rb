@@ -1,6 +1,6 @@
 class StudentsController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-  before_action :ensure_user_logged_in, :only => [:edit, :update]
+  before_action :ensure_user_logged_in, except: [:new, :create]
   before_action :ensure_correct_user, :only => [:edit, :update]
   before_action :ensure_admin_or_correct_user, :only => [:destroy]
 
@@ -13,6 +13,10 @@ class StudentsController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
+    if !Student.find_by_username params[:id]
+      flash[:danger] = "That student does not exist."
+      redirect_to students_path
+    end
   end
 
   # GET /users/new
@@ -27,6 +31,7 @@ class StudentsController < ApplicationController
   # POST /users
   # POST /users.json
   def create
+    puts user_params
     @user = Student.new(user_params)
     #@user.username = @user.email.split('@')[0]
     if @user.save
@@ -46,7 +51,7 @@ class StudentsController < ApplicationController
   def update
     respond_to do |format|
       if @user.update(user_params)
-        format.html { redirect_to @user, notice: 'User was successfully updated.' }
+        format.html { redirect_to @user, notice: 'Student was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -60,7 +65,7 @@ class StudentsController < ApplicationController
   def destroy
     @user.destroy
     respond_to do |format|
-      format.html { redirect_to users_url }
+      format.html { redirect_to students_url }
       format.json { head :no_content }
     end
   end
@@ -73,7 +78,7 @@ class StudentsController < ApplicationController
   
   # Never trust parameters from the scary internet, only allow the white list through.
   def user_params
-    params.require(:user).permit(:email, :password, :password_confirmation, :year)
+    params.require(:student).permit(:email, :password, :password_confirmation, :year)
   end
   
   def ensure_user_logged_in

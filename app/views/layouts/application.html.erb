@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>TextbookChecker - <%= yield(:title) %><%= @page_title %></title>
+  <title>TextbookChecker - <%= yield(:title) %> - <%= @page_title %></title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
@@ -9,11 +10,13 @@
   <%= yield :head %>
 </head>
 <body>
-  <div id="container">
-    <%= render "navbar" %>
-    <% flash.each do |level, message| %>
-      <div class="alert alert-<%= level %> alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><%= message %></div>
-    <% end %>
+  <%= render "navbar" %>
+  <div class="container">
+    <div class="alert-group">
+      <% flash.each do |level, message| %>
+        <div class="alert alert-<%= level %> alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><%= message %></div>
+      <% end %>
+    </div>
     <div class="panel panel-default">
       <div class="panel-heading">
         <h3 class="panel-title" style="font-weight:bold"><%= @page_title %></h3>

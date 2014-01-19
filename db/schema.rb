@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131222020727) do
+ActiveRecord::Schema.define(version: 20140111093853) do
 
   create_table "course_textbooks", force: true do |t|
     t.integer  "course_id"
@@ -77,9 +77,9 @@ ActiveRecord::Schema.define(version: 20131222020727) do
     t.string   "username"
     t.string   "email"
     t.string   "password_digest"
-    t.date     "year"
-    t.boolean  "verified"
-    t.boolean  "admin"
+    t.integer  "year"
+    t.boolean  "verified",        default: false
+    t.boolean  "admin",           default: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -96,6 +96,7 @@ ActiveRecord::Schema.define(version: 20131222020727) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "is_ebook",    default: false
+    t.string   "g_link"
   end
 
   create_table "votes", force: true do |t|

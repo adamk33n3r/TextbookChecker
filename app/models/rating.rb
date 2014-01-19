@@ -8,4 +8,8 @@ class Rating < ActiveRecord::Base
   delegate :textbook, to: :course_textbook
   delegate :course, to: :course_textbook
   
+  def to_s
+    self.course_textbook
+  end
+  
 end

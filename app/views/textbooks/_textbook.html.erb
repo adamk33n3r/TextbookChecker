@@ -1,10 +1,28 @@
 <div class="bk_div">
   <div id="bk_img">
-    <%= link_to image_tag(@textbook.image_url), @book_info.canonicalVolumeLink %>
+    <%= link_to @textbook.g_link, class: "thumbnail", style: "position: relative;" do %>
+      <%= image_tag(@textbook.image_url) %>
+      <%= content_tag :span, "eBook", class: "img-overlay" if @textbook.is_ebook %>
+    <% end %>
   </div>
   <div id="bk_info">
-    <%= link_to @textbook.title, @book_info.canonicalVolumeLink, :id => "bk_title" %>
-    <div id="bk_authors">by <%= @textbook.authors %></div>
+    <div class="form-group pull-right">
+      <%= select "course_textbook", "course_id", Course.all.collect {|c| [c.to_s, c.id]}, {}, {class: "form-control"} %>
+      <%= blink_to "Rate this Book", "#", class: "btn-info form-control" %>
+    </div>
+    <%= link_to @textbook.title, @textbook.g_link, :id => "bk_title" %>
+    <div id="bk_authors"><em>by <%= @textbook.authors %><%= " Ed. " + @textbook.edition if @textbook.edition != "Unknown" %></em></div>
+    <div id="bk_published"><em><strong>Published: </strong><%= @textbook.published.to_s :year %></em></div>
+    <div id="bk_isbn"><em><strong>ISBN: </strong><%= @textbook.isbn %></em></div>
+    <div id="bk_price"><em><strong>Price: </strong><%= @textbook.price %></em></div>
+    <% if params[:action] == "search" %>
+      <% if Textbook.where(isbn: @textbook.isbn).present? %>
+        <%= link_to "Book page", Textbook.where(isbn: @textbook.isbn).first %>
+      <% else %>
+        <%= link_to "Add book to database", new_textbook_path(isbn: @textbook.isbn) %>
+      <% end %>
+    <% end %>
+    
     <div id="bk_desc"><%= @textbook.description %></div>
   </div>
 </div>

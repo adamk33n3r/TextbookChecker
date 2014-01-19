@@ -36,7 +36,9 @@ class TextbooksController < ApplicationController
     end
     respond_to do |format|
       if @textbook.save
-        format.html { redirect_to @textbook, success: 'Textbook was successfully created.' }
+        flash[:success] = 'Textbook was successfully created by pulling data from Google Books.'
+        flash[:info] = 'If any information needs to be changed or added, please add it now and update.'
+        format.html { redirect_to edit_textbook_path(@textbook) }
         format.json { render action: 'show', status: :created, location: @textbook }
       else
         format.html { render action: 'new' }
@@ -50,7 +52,8 @@ class TextbooksController < ApplicationController
   def update
     respond_to do |format|
       if @textbook.update(textbook_params)
-        format.html { redirect_to @textbook, notice: 'Textbook was successfully updated.' }
+        flash[:sucess] = 'Textbook was successfully updated.'
+        format.html { redirect_to @textbook }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
