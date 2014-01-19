@@ -1,6 +1,8 @@
 source 'https://rubygems.org'
 
-gem "holder_rails"
+ruby '2.0.0'
+
+gem 'holder_rails'
 
 gem 'jquery-turbolinks'
 
@@ -26,10 +28,14 @@ gem 'rails', '4.0.0'
 
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3', :group => [:development, :test]
+
+# For Heroku
 group :production do
   gem 'thin'
   gem 'pg'
 end
+
+gem 'rails_12factor'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
