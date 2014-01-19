@@ -17,6 +17,3 @@
 
 # Ignore hidden files
 .*
-
-# Ignore Gemfile.lock
-Gemfile.lock
