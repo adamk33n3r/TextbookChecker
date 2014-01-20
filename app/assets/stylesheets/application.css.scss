@@ -15,6 +15,14 @@
 @import "variables";
 @import "bootstrap";
 
+.alert-notice {
+  @extend .alert-info;
+}
+
+.alert-alert {
+  @extend .alert-danger;
+}
+
 .img-overlay {
   position:absolute;
   top:40%;

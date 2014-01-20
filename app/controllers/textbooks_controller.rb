@@ -1,6 +1,6 @@
 class TextbooksController < ApplicationController
   before_action :set_textbook, only: [:show, :edit, :update, :destroy]
-  before_action :ensure_user_logged_in
+  before_action :authenticate_student!
 
   # GET /textbooks
   # GET /textbooks.json

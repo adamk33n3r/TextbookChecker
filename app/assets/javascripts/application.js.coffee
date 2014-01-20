@@ -43,7 +43,7 @@ $ ->
     $(row).click (e) ->
       return if $(e.target).parent().hasClass("btn-group")
       window.location = $(e.target).parent().data("href")
-  
+
   window.setTimeout (->
     ele = $(".alert-success")
     ele.fadeOut callback = ->

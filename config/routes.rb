@@ -9,13 +9,14 @@ Textbookchecker::Application.routes.draw do
   resources :course_textbooks do
     resources :ratings, shallow: true
   end
-
-  resources :students
-  get 'signup', to: 'students#new'
   
-  resources :sessions, :only => [:new, :create, :destroy]
-  get 'login', to: 'sessions#new', as: 'login'
-  delete 'logout', to: 'sessions#destroy', as: 'logout'
+  devise_for :students, controllers: {:registrations => "registrations"}, :path_names => { :sign_in => 'login', :sign_out => 'logout', :sign_up => 'signup'}
+  resources :students, only: [:show, :index]
+  get 'students/signup', to: 'devise/registrations#new', as: 'signup'
+  
+  #resources :sessions, :only => [:new, :create, :destroy]
+  get 'students/login', to: 'devise/sessions#new', as: 'login'
+  delete 'students/logout', to: 'devise/sessions#destroy', as: 'logout'
   
   root :to => 'main#index'
 

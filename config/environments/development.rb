@@ -15,7 +15,18 @@ Textbookchecker::Application.configure do
 
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = false
-  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+  config.action_mailer.default_url_options = { :host => 'cos243-27320.use1.actionbox.io' }
+  #config.action_mailer.delivery_method = :smtp
+
+  config.action_mailer.smtp_settings = {
+    :enable_starttls_auto => true,
+    :address => "smtp.gmail.com",
+    :port => 587,
+    :domain => "gmail.com",
+    :authentication => :login,
+    :user_name => "adamk33n3r@gmail.com",
+    :password => "Nike27nike27?",
+  }
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log

@@ -4,7 +4,7 @@
 <p>Do you ever wonder how much you'll need a textbook? Do you want to know if earlier versions still work?</p>
 <p>Then this is the site for you!</p>
 <p>Help us build the information up to help others!</p>
-<% if !logged_in? %>
+<% if !student_signed_in? %>
 <%= link_to "Sign Up", signup_path, class: "btn btn-primary" %>
 <%= link_to :Login, login_path, class: "btn btn-success" %>
 <% else %>

@@ -1,6 +1,6 @@
 class StudentsController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-  before_action :ensure_user_logged_in, except: [:new, :create]
+  before_action :authenticate_student!, except: [:new, :create]
   #before_action :ensure_correct_user, :only => [:edit, :update]
   #before_action :ensure_admin_or_correct_user, :only => [:edit, :updat, :destroy]
 
@@ -31,9 +31,15 @@ class StudentsController < ApplicationController
   # POST /users
   # POST /users.json
   def create
-    puts user_params
+    puts "\n\n\n\n\n\n\n--------------------\n\n\n\n" + user_params + "\n\n\n\n\n\n\n--------------------\n\n\n\n"
     @user = Student.new(user_params)
     #@user.username = @user.email.split('@')[0]
+    if !Rails.env.production?
+      fail "isn't production"
+      @user.skip_confirmation!
+    else
+      fail "is production"
+    end
     if @user.save
       #UserMailer.verify_email(@user).deliver
       flash[:success] = "Welcome, #{@user.username.titleize}!"
