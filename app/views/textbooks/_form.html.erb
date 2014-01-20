@@ -1,22 +1,22 @@
 
-  <% if @textbook.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@textbook.errors.count, "error") %> prohibited this textbook from being saved:</h2>
-
-      <ul>
+<% if @textbook.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@textbook.errors.count, "error") %> prohibited this textbook from being saved:</h2>
+    
+    <ul>
       <% @textbook.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
+      <li><%= msg %></li>
       <% end %>
-      </ul>
-    </div>
-  <% end %>
-  <% if params[:action] == 'edit' %>
-    <%= f.text_field :isbn, label: "ISBN" %>
-    <%= f.text_field :title %>
-    <%= f.text_field :authors %>
-    <%= f.text_field :edition %>
-    <%= f.date_field :published, max: Date.today, min: Date.new(1700) %>
-    <%= f.text_field :price, :value => number_with_precision(f.object.price, :precision => 2) %>
-  <% else %>
-    <%= f.text_field :isbn, label: "ISBN", value: (params[:isbn] if params[:isbn]) %>
-  <% end %>
+    </ul>
+  </div>
+<% end %>
+<% if params[:action] == 'edit' %>
+  <%= f.text_field :isbn, label: "ISBN" %>
+  <%= f.text_field :title %>
+  <%= f.text_field :authors %>
+  <%= f.text_field :edition %>
+  <%= f.date_field :published, max: Date.today, min: Date.new(1700) %>
+  <%= f.text_field :price, :value => number_with_precision(f.object.price, :precision => 2) %>
+<% else %>
+  <%= f.text_field :isbn, label: "ISBN", value: (params[:isbn] if params[:isbn]) %>
+<% end %>

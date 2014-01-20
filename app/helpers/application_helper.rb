@@ -36,7 +36,7 @@ module ApplicationHelper
   
   def bootstrap_form_for(name, *args, &block)
     options = args.extract_options!
-    options.merge!(builder: BootstrapFormBuilder, html: {class: "form-horizontal", role: :form})
+    options.merge!(builder: BootstrapFormBuilder, html: {role: :form})
     form_for(name, *(args << options), &block)
   end
   

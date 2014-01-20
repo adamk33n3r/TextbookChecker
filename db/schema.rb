@@ -11,17 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140120022425) do
-
-  create_table "course_textbooks", force: true do |t|
-    t.integer  "course_id"
-    t.integer  "textbook_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "course_textbooks", ["course_id"], name: "index_course_textbooks_on_course_id"
-  add_index "course_textbooks", ["textbook_id"], name: "index_course_textbooks_on_textbook_id"
+ActiveRecord::Schema.define(version: 20140120211904) do
 
   create_table "courses", force: true do |t|
     t.string   "title"
@@ -73,8 +63,47 @@ ActiveRecord::Schema.define(version: 20140120022425) do
   add_index "student_courses", ["course_id"], name: "index_student_courses_on_course_id"
   add_index "student_courses", ["student_id"], name: "index_student_courses_on_student_id"
 
-# Could not dump table "students" because of following NoMethodError
-#   undefined method `[]' for nil:NilClass
+  create_table "students", force: true do |t|
+    t.string   "username"
+    t.string   "email",                  default: "",    null: false
+    t.integer  "year"
+    t.boolean  "admin",                  default: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "encrypted_password",     default: "",    null: false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          default: 0,     null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.string   "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string   "unconfirmed_email"
+    t.integer  "failed_attempts",        default: 0,     null: false
+    t.string   "unlock_token"
+    t.datetime "locked_at"
+  end
+
+  add_index "students", ["confirmation_token"], name: "index_students_on_confirmation_token", unique: true
+  add_index "students", ["email"], name: "index_students_on_email", unique: true
+  add_index "students", ["reset_password_token"], name: "index_students_on_reset_password_token", unique: true
+  add_index "students", ["unlock_token"], name: "index_students_on_unlock_token", unique: true
+
+  create_table "textbook_associations", force: true do |t|
+    t.integer  "course_id"
+    t.integer  "textbook_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "professor_id"
+  end
+
+  add_index "textbook_associations", ["course_id"], name: "index_textbook_associations_on_course_id"
+  add_index "textbook_associations", ["professor_id"], name: "index_textbook_associations_on_professor_id"
+  add_index "textbook_associations", ["textbook_id"], name: "index_textbook_associations_on_textbook_id"
 
   create_table "textbooks", force: true do |t|
     t.string   "title"

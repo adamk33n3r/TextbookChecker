@@ -6,7 +6,6 @@ class RegistrationsController < Devise::RegistrationsController
   def create
     build_resource sign_up_params
     resource.skip_confirmation! if !Rails.env.production?
-    puts "\n\n\n\n\n\n\n--------------------\n\n\n\n" + self.resource.attributes.to_s + "\n\n\n\n\n\n\n--------------------\n\n\n\n"
     #fail resource
     #resource.email
     #resource.username = (/(.*)@/.match resource.email)[1]

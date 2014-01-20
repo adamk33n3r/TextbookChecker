@@ -1,6 +1,7 @@
 class Professor < ActiveRecord::Base
-  has_many :professor_courses
-  has_many :courses, through: :professor_courses
+  has_many :textbook_associations
+  has_many :courses, through: :textbook_associations
+  has_many :textbooks, through: :textbook_associations
   validates_presence_of :first_name, :last_name, :department, :title
   
   def to_s
