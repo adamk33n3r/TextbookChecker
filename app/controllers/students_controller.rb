@@ -104,7 +104,7 @@ class StudentsController < ApplicationController
       return
     end
       
-    unless current_user? @user || current_user.admin?
+    unless current_user.admin? || current_user?(@user)
       flash[:danger] = "You are not admin. This is not allowed."
       redirect_to request.referer
     end
