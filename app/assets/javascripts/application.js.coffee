@@ -38,11 +38,10 @@ $ ->
     #  $(e.target).parent().addClass("hidden")
     #$(collapsable).on 'show.bs.collapse', (e) ->
     #  $(e.target).parent().removeClass("hidden")
-    
+  
   for row in $("tr[data-href]")
-    console.log row
     $(row).click (e) ->
-      console.log $(e.target)
+      return if $(e.target).parent().hasClass("btn-group")
       window.location = $(e.target).parent().data("href")
   
   window.setTimeout (->

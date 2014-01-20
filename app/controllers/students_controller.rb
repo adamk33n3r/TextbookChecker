@@ -1,8 +1,8 @@
 class StudentsController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   before_action :ensure_user_logged_in, except: [:new, :create]
-  before_action :ensure_correct_user, :only => [:edit, :update]
-  before_action :ensure_admin_or_correct_user, :only => [:destroy]
+  #before_action :ensure_correct_user, :only => [:edit, :update]
+  #before_action :ensure_admin_or_correct_user, :only => [:edit, :updat, :destroy]
 
   # GET /users
   # GET /users.json
@@ -106,6 +106,7 @@ class StudentsController < ApplicationController
       
     unless current_user.admin? || current_user?(@user)
       flash[:danger] = "You are not admin. This is not allowed."
+      puts request.referer
       redirect_to request.referer
     end
   end
