@@ -7,6 +7,7 @@ class ChangeCourseTextbooksToTextbookAssociations < ActiveRecord::Migration
     rename_table :course_textbooks, :textbook_associations
     change_table :textbook_associations do |t|
       t.references :professor, index: true
+      t.remove :id
     end
   end
   

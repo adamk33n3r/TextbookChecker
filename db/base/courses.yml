@@ -1,0 +1,23 @@
+
+---
+courses:
+  columns:
+  - id
+  - title
+  - letters
+  - number
+  - created_at
+  - updated_at
+  records: 
+  - - 1
+    - Foundations of Christian Thought
+    - IAS
+    - 110
+    - '2014-01-21 00:20:56.357303'
+    - '2014-01-21 00:20:56.357303'
+  - - 2
+    - Principles of Human-Computer Interaction
+    - SYS
+    - 214
+    - '2014-01-21 01:41:15.851546'
+    - '2014-01-21 01:41:15.851546'

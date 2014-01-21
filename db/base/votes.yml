@@ -1,0 +1,9 @@
+
+---
+votes:
+  columns:
+  - id
+  - method
+  records: 
+  - - 1
+    - Download

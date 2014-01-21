@@ -1,5 +1,6 @@
 <%= render @textbook %>
-<div class="btn-group">
+
+<div class="col-sm-12 btn-group">
   <%= blink_to 'Back', textbooks_path, class: "btn-default btn-sm" %>
   <%= blink_to 'Edit', edit_textbook_path(@textbook), class: "btn-warning btn-sm" %>
 </div>

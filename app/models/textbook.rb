@@ -1,6 +1,7 @@
 class Textbook < ActiveRecord::Base
-  has_many :course_textbooks
-  has_many :courses, through: :course_textbooks
+  has_many :textbook_associations
+  has_many :courses, through: :textbook_associations
+  has_many :professors, through: :textbook_associations
   
   validates_presence_of :title, :authors, :edition, :price, :isbn, :description, :image_url, :published
 

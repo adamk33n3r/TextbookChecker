@@ -1,0 +1,19 @@
+
+---
+ratings:
+  columns:
+  - id
+  - content
+  - vote_id
+  - student_id
+  - course_textbook_id
+  - created_at
+  - updated_at
+  records: 
+  - - 1
+    - This is the content for the rating.
+    - 1
+    - 1
+    - 1
+    - '2013-12-21 08:31:09.428868'
+    - '2013-12-21 08:31:09.428868'

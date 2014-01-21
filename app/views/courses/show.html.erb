@@ -1,20 +1,23 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Title:</strong>
-  <%= @course.title %>
-</p>
-
-<p>
-  <strong>Course Number:</strong>
-  <%= @course.letters %><%= @course.number %>
-</p>
-<p><strong>Professors that teach this course:</strong></p>
-<ul>
-  <% @course.professors.each do |prof| %>
-  <li><%= link_to prof, prof %></li>
-  <% end %>
-</ul>
-
-<%= link_to 'Edit', edit_course_path(@course) %> |
-<%= link_to 'Back', courses_path %>
+<div class="container-fluid">
+  <div class="row">
+    <div class="row col-sm-4">
+    <h3>
+      <%= @course.title %><br/>
+      <small><%= @course.course %></small>
+    </h3>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-4 well well-sm">
+      <strong>Professors that teach this course:</strong>
+      <ul>
+        <% @course.professors.each do |prof| %>
+          <li><%= link_to prof, prof %></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+  <div class="row btn-group">
+    <%= blink_to 'Back', :back %><%= blink_to 'Edit', edit_course_path(@course), class: "btn-warning" %>
+  </div>
+</div>

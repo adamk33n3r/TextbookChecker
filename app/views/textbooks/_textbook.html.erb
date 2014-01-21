@@ -1,11 +1,11 @@
 <div class="bk_div">
-  <div id="bk_img">
+  <div id="bk_img" class="col-sm-3">
     <%= link_to @textbook.g_link, class: "thumbnail", style: "position: relative;" do %>
       <%= image_tag(@textbook.image_url) %>
       <%= content_tag :span, "eBook", class: "img-overlay" if @textbook.is_ebook %>
     <% end %>
   </div>
-  <div id="bk_info">
+  <div id="bk_info" class="col-sm-9">
     <div class="form-group pull-right">
       <%= select "course_textbook", "course_id", Course.all.collect {|c| [c.to_s, c.id]}, {}, {class: "form-control"} %>
       <%= blink_to "Rate this Book", "#", class: "btn-info form-control" %>
@@ -24,5 +24,13 @@
     <% end %>
     
     <div id="bk_desc"><%= @textbook.description %></div>
+    <div class="well well-sm">
+      <strong>Courses this textbook is in</strong>
+      <ul>
+        <% @textbook.textbook_associations.collect{|ta| [ta.course, ta.professor]}.each do |course, professor| %>
+        <li><%= link_to course.to_s+"-"+professor.to_s, course %></li>
+        <% end %>
+      </ul>
+    </div>
   </div>
 </div>

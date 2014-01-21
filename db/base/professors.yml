@@ -1,0 +1,33 @@
+
+---
+professors:
+  columns:
+  - id
+  - first_name
+  - last_name
+  - department
+  - title
+  - created_at
+  - updated_at
+  records: 
+  - - 1
+    - Mark
+    - Cosgrove
+    - Psychology
+    - Dr.
+    - '2014-01-20 22:42:35.946415'
+    - '2014-01-20 22:42:35.946415'
+  - - 2
+    - Jeff
+    - Cramer
+    - CSE
+    - Dr.
+    - '2014-01-21 00:22:37.157340'
+    - '2014-01-21 00:22:37.157340'
+  - - 3
+    - Jennifer
+    - Shivers
+    - CSE
+    - Prof.
+    - '2014-01-21 01:39:05.633999'
+    - '2014-01-21 01:39:05.633999'
