@@ -93,7 +93,7 @@ ActiveRecord::Schema.define(version: 20140120211904) do
   add_index "students", ["reset_password_token"], name: "index_students_on_reset_password_token", unique: true
   add_index "students", ["unlock_token"], name: "index_students_on_unlock_token", unique: true
 
-  create_table "textbook_associations", force: true do |t|
+  create_table "textbook_associations", id: false, force: true do |t|
     t.integer  "course_id"
     t.integer  "textbook_id"
     t.datetime "created_at"
