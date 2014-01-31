@@ -10,7 +10,7 @@ class Rating < ActiveRecord::Base
   delegate :professor, to: :textbook_association
   
   def to_s
-    self.course_textbook
+    self.course.to_s + " - " + self.textbook.to_s
   end
   
 end

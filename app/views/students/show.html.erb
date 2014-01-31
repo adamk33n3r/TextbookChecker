@@ -6,7 +6,7 @@
       <div class="row"><%= image_tag gravatar_url(@user, 512), class: "img-thumbnail" %></div>
       <div class="row">
         <ul class="list-unstyled">
-          <li><strong>Email: </strong><%= @user.email %><% if @user == current_user %> <%= boolean @user.verified %><% end %></li>
+          <li><strong>Email: </strong><%= @user.email %><% if @user == current_student %> <%= boolean !@user.confirmed_at.nil? %><% end %></li>
           <li><strong>Year: </strong><%= @user.year %></li>
         </ul>
       </div>
@@ -18,7 +18,6 @@
           <ul class="list-unstyled">
             <% @user.ratings.each do |rating| %>
               <li><%= rating %></li>
-              <li><%= rating %></li>
             <% end %>
           </ul>
         </div>
@@ -26,10 +25,9 @@
     </div>
     <div class="col-sm-4">
       <div class="well well-sm">
-        <strong>Players</strong>
+        <strong>Ratings</strong>
         <ul class="list-unstyled">
             <% @user.ratings.each do |rating| %>
-              <li><%= rating %></li>
               <li><%= rating %></li>
             <% end %>
           </ul>

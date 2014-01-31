@@ -11,7 +11,7 @@ Textbookchecker::Application.routes.draw do
   end
   
   devise_for :students, controllers: {:registrations => "registrations"}, :path_names => { :sign_in => 'login', :sign_out => 'logout', :sign_up => 'signup'}
-  resources :students, only: [:show, :index]
+  resources :students, only: [:show, :index, :edit]
   get 'students/signup', to: 'devise/registrations#new', as: 'signup'
   
   #resources :sessions, :only => [:new, :create, :destroy]
