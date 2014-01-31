@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140120211904) do
+ActiveRecord::Schema.define(version: 20140131034218) do
 
   create_table "courses", force: true do |t|
     t.string   "title"
@@ -44,13 +44,13 @@ ActiveRecord::Schema.define(version: 20140120211904) do
     t.string   "content"
     t.integer  "vote_id"
     t.integer  "student_id"
-    t.integer  "course_textbook_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "textbook_association_id"
   end
 
-  add_index "ratings", ["course_textbook_id"], name: "index_ratings_on_course_textbook_id"
   add_index "ratings", ["student_id"], name: "index_ratings_on_student_id"
+  add_index "ratings", ["textbook_association_id"], name: "index_ratings_on_textbook_association_id"
   add_index "ratings", ["vote_id"], name: "index_ratings_on_vote_id"
 
   create_table "student_courses", force: true do |t|
@@ -93,7 +93,7 @@ ActiveRecord::Schema.define(version: 20140120211904) do
   add_index "students", ["reset_password_token"], name: "index_students_on_reset_password_token", unique: true
   add_index "students", ["unlock_token"], name: "index_students_on_unlock_token", unique: true
 
-  create_table "textbook_associations", id: false, force: true do |t|
+  create_table "textbook_associations", force: true do |t|
     t.integer  "course_id"
     t.integer  "textbook_id"
     t.datetime "created_at"

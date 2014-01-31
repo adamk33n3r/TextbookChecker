@@ -6,7 +6,7 @@ ratings:
   - content
   - vote_id
   - student_id
-  - course_textbook_id
+  - textbook_association_id
   - created_at
   - updated_at
   records: 
