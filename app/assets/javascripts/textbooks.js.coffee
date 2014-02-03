@@ -1,6 +1,12 @@
 # Place all the behaviors and hooks related to the matching controller here.
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
+
+$ ->
+  $('#rate-book').click ->
+    ta_id = $('#rate-selection').children("option").filter(":selected").val()
+    window.location = $('#rate-book').data('location').replace /-1/, ta_id
+
 ###
 find_book = (isbn) ->
   content = $('#content')

@@ -1,4 +1,5 @@
 Textbookchecker::Application.routes.draw do
+  resources :vote # Need to remove this eventually
   resources :professors
 
   resources :courses
@@ -6,7 +7,7 @@ Textbookchecker::Application.routes.draw do
   get '/textbooks/search', :to => 'textbooks#search', :as => :search_textbooks
   resources :textbooks
   
-  resources :course_textbooks do
+  resources :textbook_associations do
     resources :ratings, shallow: true
   end
   

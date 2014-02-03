@@ -5,11 +5,13 @@
 /* Search View */
 
 
-div.bk_div {
+div#bk_div {
   div#bk_img {
     a.thumbnail {
       opacity: 1;
       transition: opacity .3s;
+      margin-bottom: 0px;
+      -webkit-transform: translateZ(0);
     }
     a.thumbnail:hover {
       opacity: .75;

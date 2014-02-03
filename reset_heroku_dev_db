@@ -1,0 +1,2 @@
+heroku pg:reset DATABASE_URL --app textbookchecker-dev
+heroku run --app textbookchecker-dev rake db:migrate db:data:load_dir

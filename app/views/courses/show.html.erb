@@ -1,6 +1,7 @@
+<!-- courses/show -->
 <div class="container-fluid">
   <div class="row">
-    <div class="row col-sm-4">
+    <div class="col-sm-6">
     <h3>
       <%= @course.title %><br/>
       <small><%= @course.course %></small>
@@ -8,14 +9,23 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-sm-4 well well-sm">
-      <strong>Professors that teach this course:</strong>
-      <ul>
-        <% @course.professors.each do |prof| %>
-          <li><%= link_to prof, prof %></li>
-        <% end %>
-      </ul>
-    </div>
+    <% @course.professors.each do |prof| %>
+      <div class="col-sm-6">
+        <div class="panel panel-default">
+          <div class="panel-heading"><strong><%= link_to prof, prof %></strong></div>
+          <div class="panel-body">
+            <ul>
+              <% prof.textbook_associations.collect{|ta| ta.textbook}.each do |textbook| %>
+              <li>
+                <%= link_to textbook, textbook %>
+                <%= blink_to "Rate!", new_textbook_association_rating_path(@course.textbook_associations.where(textbook: textbook, professor: prof).first) %>
+              </li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      </div>
+    <% end %>
   </div>
   <div class="row btn-group">
     <%= blink_to 'Back', :back %><%= blink_to 'Edit', edit_course_path(@course), class: "btn-warning" %>

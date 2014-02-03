@@ -6,10 +6,10 @@ GIT
     yaml_db (0.2.3)
 
 GIT
-  remote: git://github.com/thomas-mcdonald/bootstrap-sass.git
-  revision: 4b61cdd0b43b7743f84c748dbad782db950bc489
+  remote: git://github.com/twbs/bootstrap-sass.git
+  revision: 02a611e88a037370cb4b310117a8a5e6b03176a9
   specs:
-    bootstrap-sass (3.0.3.0)
+    bootstrap-sass (3.1.0.0)
       sass (~> 3.2)
 
 GEM
@@ -103,6 +103,7 @@ GEM
     orm_adapter (0.4.0)
     pg (0.17.1)
     polyglot (0.3.3)
+    possessive (1.0.1)
     rack (1.5.2)
     rack-test (0.6.2)
       rack (>= 1.0)
@@ -196,6 +197,7 @@ DEPENDENCIES
   jquery-rails
   jquery-turbolinks
   pg
+  possessive
   rails (= 4.0.0)
   rails_12factor
   rspec-rails

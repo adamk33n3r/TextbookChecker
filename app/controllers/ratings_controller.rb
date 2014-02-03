@@ -1,16 +1,17 @@
 class RatingsController < ApplicationController
   before_action :set_rating, only: [:show, :edit, :update, :destroy]
-  before_action :ensure_user_logged_in
+  before_action :set_ta, only: [:new, :create, :index]
+  before_action :authenticate_student!
 
   def index
-    @ratings = Rating.all
+    @ratings = @ta.nil? ? Rating.all : Rating.where(textbook_association_id: @ta.id)
   end
 
   def show
   end
 
   def new
-    @rating = Rating.new
+    @rating = Rating.new textbook_association: @ta
   end
 
   def edit
@@ -18,9 +19,9 @@ class RatingsController < ApplicationController
 
   def create
     @rating = Rating.new(rating_params)
-
+    @rating.content.strip!
     respond_to do |format|
-      if @rating.save
+      if @rating.save!
         format.html { redirect_to @rating, notice: 'Rating was successfully created.' }
         format.json { render action: 'show', status: :created, location: @course }
       else
@@ -55,9 +56,17 @@ class RatingsController < ApplicationController
     def set_rating
       @rating = Rating.find(params[:id])
     end
+  
+    def set_ta
+      @ta = TextbookAssociation.find_by_id init_rating_params
+    end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def rating_params
-      params.require(:rating).permit(:content, :vote, :student, :course_textbook)
+      params.require(:rating).permit(:content, :vote_id).merge params.permit(:textbook_association_id).merge(student: current_student)
+    end
+  
+    def init_rating_params
+      params.require(:textbook_association_id)
     end
 end

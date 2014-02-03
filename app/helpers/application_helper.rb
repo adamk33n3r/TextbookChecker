@@ -1,5 +1,16 @@
 module ApplicationHelper
-
+  def link_to(name = nil, options = nil, html_options = nil, &block)
+    super(name, options.nil? ? name : options, html_options, &block)
+  end
+  def blink_to(body, url, html_options = {})
+    if html_options[:class]
+      html_options[:class] = "btn " + html_options[:class]
+    else
+      html_options[:class] = "btn btn-default"
+    end
+    self.link_to body, url, html_options
+  end
+  
   def boolean(bool)
     icon = bool ? "check_small.png" : "cross_small.png"
     image_tag "icons/#{icon}", size: "12"
@@ -49,6 +60,7 @@ module ApplicationHelper
   # +additions+:: hash of name:attribute to print out last
   # +first+:: hash of name:attribute to print out first
   def bootstrap_table_for(objects, exclusions:[], replacements:{}, additions:{}, first:{}, dropdown:[])
+    return if objects.empty?
     exclusions += ["id", "created_at", "updated_at"]
     thead = content_tag :thead do
       content_tag :tr do
@@ -112,14 +124,5 @@ module ApplicationHelper
     else
       concat(content_tag(tag, content))
     end
-  end
-
-  def blink_to(body, url, html_options = {})
-    if html_options[:class]
-      html_options[:class] = "btn " + html_options[:class]
-    else
-      html_options[:class] = "btn btn-default"
-    end
-    link_to body, url, html_options
   end
 end

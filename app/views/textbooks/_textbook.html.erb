@@ -1,15 +1,11 @@
-<div class="bk_div">
-  <div id="bk_img" class="col-sm-3">
+<div id="bk_div" class="container-fluid">
+  <div id="bk_img" class="col-xs-5 col-sm-3">
     <%= link_to @textbook.g_link, class: "thumbnail", style: "position: relative;" do %>
-      <%= image_tag(@textbook.image_url) %>
-      <%= content_tag :span, "eBook", class: "img-overlay" if @textbook.is_ebook %>
-    <% end %>
+    <%= image_tag(@textbook.image_url) %>
+    <%# content_tag :span, "eBook", class: "img-overlay" if @textbook.is_ebook %>
+  <% end %>
   </div>
-  <div id="bk_info" class="col-sm-9">
-    <div class="form-group pull-right">
-      <%= select "course_textbook", "course_id", Course.all.collect {|c| [c.to_s, c.id]}, {}, {class: "form-control"} %>
-      <%= blink_to "Rate this Book", "#", class: "btn-info form-control" %>
-    </div>
+  <div id="bk_info">
     <%= link_to @textbook.title, @textbook.g_link, :id => "bk_title" %>
     <div id="bk_authors"><em>by <%= @textbook.authors %><%= " Ed. " + @textbook.edition if @textbook.edition != "Unknown" %></em></div>
     <div id="bk_published"><em><strong>Published: </strong><%= @textbook.published.to_s :year %></em></div>
@@ -22,15 +18,6 @@
         <%= link_to "Add book to database", new_textbook_path(isbn: @textbook.isbn) %>
       <% end %>
     <% end %>
-    
     <div id="bk_desc"><%= @textbook.description %></div>
-    <div class="well well-sm">
-      <strong>Courses this textbook is in</strong>
-      <ul>
-        <% @textbook.textbook_associations.collect{|ta| [ta.course, ta.professor]}.each do |course, professor| %>
-        <li><%= link_to course.to_s+"-"+professor.to_s, course %></li>
-        <% end %>
-      </ul>
-    </div>
   </div>
 </div>

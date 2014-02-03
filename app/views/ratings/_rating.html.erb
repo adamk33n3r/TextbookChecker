@@ -1,0 +1,8 @@
+<h3>
+  Rating for <%= link_to @rating.textbook %> in <%= link_to @rating.professor.to_s+"'s", @rating.professor %> <%= link_to @rating.course %>
+  <br/><small><%= @rating.student %> gives it a <span class="underline"><%= @rating %></span></small>
+</h3>
+
+<div class="well well-sm">
+  <%= @rating.content %>
+</div>

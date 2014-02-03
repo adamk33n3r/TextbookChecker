@@ -36,6 +36,7 @@
               <div class="col-xs-4"><%= image_tag textbook.image_url, class: "img-thumbnail" %></div>
               <div class="col-xs-8">
                 <div class="row">
+                  <%# This should be changed to text-overflow %>
                   <div class="col-xs-12"><%= textbook.description.split(/\s+/, 21)[0...20].join(' ') %><%= '...' if textbook.description.split.size > 20 %></div>
                 </div>
                 <div class="row">

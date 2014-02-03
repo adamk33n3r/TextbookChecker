@@ -1,6 +1,19 @@
-<%= render @textbook %>
-
-<div class="col-sm-12 btn-group">
+<div class="row">
+  <%= render @textbook %>
+</div>
+<div class="well well-sm">
+  <strong>Courses this textbook is in</strong>
+  <ul>
+    <% @textbook.textbook_associations.collect{|ta| [ta, ta.course, ta.professor]}.each do |ta, course, professor| %>
+    <li><%= link_to course.to_s+" - "+professor.to_s, course %><%= link_to "See Ratings", textbook_association_ratings_path(ta), class: "pull-right" %></li>
+    <% end %>
+  </ul>
+</div>
+<div class="form-group">
+  <%= select "course_textbook", "course_id", @textbook.textbook_associations.collect {|ta| ["#{ta.course.to_s} - #{ta.professor.to_s}", ta.id]}, {}, {class: "form-control", id: "rate-selection"} %>
+  <%= content_tag :div, "Rate this Book", class: "btn btn-info form-control", id: "rate-book", data: {location: new_textbook_association_rating_path(-1)} %>
+</div>
+<div class="btn-group">
   <%= blink_to 'Back', textbooks_path, class: "btn-default btn-sm" %>
   <%= blink_to 'Edit', edit_textbook_path(@textbook), class: "btn-warning btn-sm" %>
 </div>

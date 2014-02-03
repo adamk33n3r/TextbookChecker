@@ -2,6 +2,8 @@ source 'https://rubygems.org'
 
 ruby '2.0.0'
 
+gem 'possessive'
+
 gem 'devise'
 
 gem 'holder_rails'
@@ -41,7 +43,7 @@ gem 'rails_12factor'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
-gem 'bootstrap-sass', github: 'thomas-mcdonald/bootstrap-sass'
+gem 'bootstrap-sass', github: 'twbs/bootstrap-sass'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
