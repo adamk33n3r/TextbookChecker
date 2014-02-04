@@ -3,11 +3,11 @@
 <div id="student_info" class="well">
   <div class="row">
     <div class="col-sm-4">
-      <div class="row"><%= image_tag gravatar_url(@user, 512), class: "img-thumbnail" %></div>
+      <div class="row"><%= image_tag gravatar_url(@student, 512), class: "img-thumbnail" %></div>
       <div class="row">
         <ul class="list-unstyled">
-          <li><strong>Email: </strong><%= @user.email %><% if @user == current_student %> <%= boolean !@user.confirmed_at.nil? %><% end %></li>
-          <li><strong>Year: </strong><%= @user.year %></li>
+          <li><strong>Email: </strong><%= @student.email %><% if @student == current_student %> <%= boolean !@student.confirmed_at.nil? %><% end %></li>
+          <li><strong>Year: </strong><%= @student.year %></li>
         </ul>
       </div>
     </div>
@@ -16,7 +16,7 @@
         <div class="panel-heading"><h3 class="panel-title">Ratings</h3></div>
         <div class="panel-body">
           <ul class="list-unstyled">
-            <% @user.ratings.each do |rating| %>
+            <% @student.ratings.each do |rating| %>
               <li><%= rating %></li>
             <% end %>
           </ul>
@@ -27,7 +27,7 @@
       <div class="well well-sm">
         <strong>Ratings</strong>
         <ul class="list-unstyled">
-            <% @user.ratings.each do |rating| %>
+            <% @student.ratings.each do |rating| %>
               <li><%= rating %></li>
             <% end %>
           </ul>
@@ -37,6 +37,6 @@
 </div>
 <div class="btn-group">
   <%= link_to 'Back', students_path, class: "btn btn-default btn-sm" %>
-  <%= link_to 'Edit', edit_student_path(@user), class: "btn btn-warning btn-sm" %>
-  <%= link_to 'Delete', student_path(@user), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger btn-sm" %>
+  <%= link_to 'Edit', edit_student_path(@student), class: "btn btn-warning btn-sm" %>
+  <%= link_to 'Delete', student_path(@student), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger btn-sm" %>
 </div>
