@@ -1,52 +1,59 @@
+<!-- textbooks/index -->
 <%# bootstrap_table_for @textbooks, first: {"Title"=>"title","Authors"=>"authors"}, exclusions: ["description", "image_url", "g_link","title","authors"], replacements: {"isbn" => "ISBN", "is_ebook" => "eBook"} %>
 <% %>
 <table class="table table-hover">
   <thead>
     <tr>
       <th></th>
+      <th>Type</th>
       <th>Title</th>
       <th>Authors</th>
       <th></th>
     </tr>
   </thead>
   <tbody>
-    
     <% @textbooks.each do |textbook| %>
       <%= content_tag :tr, class: "pointer collapsed collapse-toggler", data: {toggle: "", target: "#collapse#{textbook.id}"} do %>
         <td><%= content_tag :span, "", class: "glyphicon glyphicon-chevron-right", id: "chevron#{textbook.id}" %></td>
-        <td><%= content_tag :span, "", class: textbook.is_ebook ? "glyphicon glyphicon-cloud-download" : "glyphicon glyphicon-book" %> <%= textbook.title %></td>
+        <td>
+          <%= content_tag :span, "", class: "glyphicon glyphicon-book" %>
+          <%= content_tag :span, "", class: "glyphicon glyphicon-cloud-download" if textbook.ebook? %>
+        </td>
+        <td><%= textbook.title %></td>
         <td><%= textbook.authors %></td>
         <td class="text-right">
           <div class="btn-group-vertical visible-xs">
             <%= link_to "More Info", textbook, class: "btn btn-xs btn-info" %>
-            <%= link_to "Edit", edit_textbook_path(textbook), class: "btn btn-xs btn-warning" %>
-            <%= link_to "Delete", textbook, class: "btn btn-xs btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %>
+            <% if current_student.admin? %>
+              <%= link_to "Edit", edit_textbook_path(textbook), class: "btn btn-xs btn-warning" %>
+              <%= link_to "Delete", textbook, class: "btn btn-xs btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %>
+            <% end %>
           </div>
           <div class="btn-group hidden-xs">
             <%= link_to "More Info", textbook, class: "btn btn-xs btn-info" %>
-            <%= link_to "Edit", edit_textbook_path(textbook), class: "btn btn-xs btn-warning" %>
-            <%= link_to "Delete", textbook, class: "btn btn-xs btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %>
+            <% if current_student.admin? %>
+              <%= link_to "Edit", edit_textbook_path(textbook), class: "btn btn-xs btn-warning" %>
+              <%= link_to "Delete", textbook, class: "btn btn-xs btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %>
+            <% end %>
           </div>
         </td>
       <% end %>
-      <tr class="hidden-row">
-        <td class="hide-cell" colspan="4">
+      <tr>
+        <td class="hide-cell" colspan="5">
           <%= content_tag :div, class:"collapsable collapse container-fluid", id:"collapse#{textbook.id}" do %>
             <div class="row">
               <div class="col-xs-4"><%= image_tag textbook.image_url, class: "img-thumbnail" %></div>
               <div class="col-xs-8">
                 <div class="row">
-                  <%# This should be changed to text-overflow %>
-                  <div class="col-xs-12"><%= textbook.description.split(/\s+/, 21)[0...20].join(' ') %><%= '...' if textbook.description.split.size > 20 %></div>
+                  <div class="col-xs-12" style="overflow:auto;max-height:100px"><%= textbook.description %></div>
                 </div>
                 <div class="row">
-                  <div class="col-sm-3"><strong>Edition: </strong><%= textbook.edition %></div>
-                  <div class="col-sm-3"><strong>Published: </strong><%= textbook.published.to_s :year %></div>
+                  <div class="col-sm-4"><strong>Edition: </strong><%= textbook.edition %></div>
+                  <div class="col-sm-4"><strong>Published: </strong><%= textbook.published.to_s :year %></div>
                 </div>
                 <div class="row">
-                  <div class="col-sm-3"><strong>eBook: </strong><%= boolean textbook.is_ebook %></div>
-                  <div class="col-sm-3"><strong>ISBN: </strong><%= textbook.isbn %></div>
-                  <%# number_to_currency(textbook.price) %>
+                  <div class="col-sm-4"><strong>Has eBook: </strong><%= boolean textbook.is_ebook %></div>
+                  <div class="col-sm-4"><strong>ISBN: </strong><%= textbook.isbn %></div>
                 </div>
               </div>
             </div>

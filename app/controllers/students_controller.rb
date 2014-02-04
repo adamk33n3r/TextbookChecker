@@ -4,14 +4,14 @@ class StudentsController < ApplicationController
   #before_action :ensure_correct_user, :only => [:edit, :update]
   #before_action :ensure_admin_or_correct_user, :only => [:edit, :updat, :destroy]
 
-  # GET /users
-  # GET /users.json
+  # GET /students
+  # GET /students.json
   def index
     @users = Student.all
   end
 
-  # GET /users/1
-  # GET /users/1.json
+  # GET /students/1
+  # GET /students/1.json
   def show
     if !Student.find_by_username params[:id]
       flash[:danger] = "That student does not exist."
@@ -19,19 +19,18 @@ class StudentsController < ApplicationController
     end
   end
 
-  # GET /users/new
+  # GET /students/new
   def new
     @user = Student.new
   end
 
-  # GET /users/1/edit
+  # GET /students/1/edit
   def edit
   end
 
-  # POST /users
-  # POST /users.json
+  # POST /students
+  # POST /students.json
   def create
-    puts "\n\n\n\n\n\n\n--------------------\n\n\n\n" + user_params + "\n\n\n\n\n\n\n--------------------\n\n\n\n"
     @user = Student.new(user_params)
     #@user.username = @user.email.split('@')[0]
     if !Rails.env.production?
@@ -52,8 +51,8 @@ class StudentsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /users/1
-  # PATCH/PUT /users/1.json
+  # PATCH/PUT /students/1
+  # PATCH/PUT /students/1.json
   def update
     respond_to do |format|
       if @user.update(user_params)
@@ -66,8 +65,8 @@ class StudentsController < ApplicationController
     end
   end
 
-  # DELETE /users/1
-  # DELETE /users/1.json
+  # DELETE /students/1
+  # DELETE /students/1.json
   def destroy
     @user.destroy
     respond_to do |format|
@@ -85,35 +84,5 @@ class StudentsController < ApplicationController
   # Never trust parameters from the scary internet, only allow the white list through.
   def user_params
     params.require(:student).permit(:email, :password, :password_confirmation, :year)
-  end
-  
-  def ensure_user_logged_in
-    unless logged_in?
-      flash[:warning] = "You must be logged in to do that."
-      session[:return_to] = request.original_url
-      redirect_to login_path
-    end
-  end
-  
-  def ensure_correct_user
-    unless current_user? @user
-      flash[:danger] = "This is not you. This is not allowed."
-      redirect_to request.referer
-    end
-  end
-  
-  def ensure_admin_or_correct_user
-    unless logged_in?
-      flash[:warning] = "You must be logged in to do that."
-      session[:return_to] = request.original_url
-      redirect_to login_path
-      return
-    end
-      
-    unless current_user.admin? || current_user?(@user)
-      flash[:danger] = "You are not admin. This is not allowed."
-      puts request.referer
-      redirect_to request.referer
-    end
   end
 end

@@ -2,7 +2,7 @@ class TextbookAssociation < ActiveRecord::Base
   belongs_to :professor
   belongs_to :course
   belongs_to :textbook
-  has_many :ratings
+  has_many :ratings, dependent: :delete_all
   
   # These validations prevent duplicates. I need these because I needed to add
   # an id attribute which would normally make them always unique.

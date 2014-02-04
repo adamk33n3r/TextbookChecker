@@ -18,7 +18,7 @@
               <% prof.textbook_associations.collect{|ta| ta.textbook}.each do |textbook| %>
               <li>
                 <%= link_to textbook, textbook %>
-                <%= blink_to "Rate!", new_textbook_association_rating_path(@course.textbook_associations.where(textbook: textbook, professor: prof).first) %>
+                <%= link_to "Rate!", new_textbook_association_rating_path(@course.textbook_associations.where(textbook: textbook, professor: prof).first), class: "pull-right" %>
               </li>
               <% end %>
             </ul>
@@ -27,7 +27,7 @@
       </div>
     <% end %>
   </div>
-  <div class="row btn-group">
+  <div class="row btn-group hidden">
     <%= blink_to 'Back', :back %><%= blink_to 'Edit', edit_course_path(@course), class: "btn-warning" %>
   </div>
 </div>

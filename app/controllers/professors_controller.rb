@@ -1,6 +1,12 @@
 class ProfessorsController < ApplicationController
   before_action :set_professor, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_student!
+  before_action only: [:edit, :update, :destroy] do
+    unless current_student.admin?
+      flash[:danger] = "You are not allowed to do that!"
+      redirect_to :back
+    end
+  end
 
   # GET /professors
   # GET /professors.json

@@ -1,3 +1,4 @@
+<!-- textbooks/show -->
 <div class="row">
   <%= render @textbook %>
 </div>
@@ -9,7 +10,7 @@
     <% end %>
   </ul>
 </div>
-<div class="form-group">
+<div class="form-group hidden">
   <%= select "course_textbook", "course_id", @textbook.textbook_associations.collect {|ta| ["#{ta.course.to_s} - #{ta.professor.to_s}", new_textbook_association_rating_path(ta.id)]}, {}, {class: "form-control", id: "rating-selection"} %>
   <%= content_tag :div, "Rate this Book", class: "btn btn-info form-control", id: "rate-book" %>
 </div>

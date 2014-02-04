@@ -105,7 +105,7 @@ module ApplicationHelper
               concat(content_tag :td, "NoMethodFound: " + item[1])
             end
           end
-          concat(content_tag(:td) do
+          concat(content_tag(:td, class: "text-right") do
             content_tag(:div, class: "btn-group") do
               link_to("Show", obj, class: "btn btn-xs btn-info") +
               link_to("Edit", url_for([:edit, obj]), class: "btn btn-xs btn-warning") +
@@ -115,7 +115,7 @@ module ApplicationHelper
         end)
       end
     end
-    content_tag :table, thead.concat(tbody), class: "table table-striped table-condensed table-hover"
+    content_tag :table, thead.concat(tbody), class: "table table-hover"
   end
   
   def concat_tag(tag, content)

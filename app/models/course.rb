@@ -2,7 +2,7 @@ class Course < ActiveRecord::Base
   has_many :student_courses
   has_many :students, through: :student_courses
   
-  has_many :textbook_associations
+  has_many :textbook_associations, dependent: :delete_all
   has_many :professors, -> { uniq }, through: :textbook_associations
   has_many :textbooks, -> { uniq }, through: :textbook_associations
   
