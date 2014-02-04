@@ -10,8 +10,8 @@
   </ul>
 </div>
 <div class="form-group">
-  <%= select "course_textbook", "course_id", @textbook.textbook_associations.collect {|ta| ["#{ta.course.to_s} - #{ta.professor.to_s}", ta.id]}, {}, {class: "form-control", id: "rate-selection"} %>
-  <%= content_tag :div, "Rate this Book", class: "btn btn-info form-control", id: "rate-book", data: {location: new_textbook_association_rating_path(-1)} %>
+  <%= select "course_textbook", "course_id", @textbook.textbook_associations.collect {|ta| ["#{ta.course.to_s} - #{ta.professor.to_s}", new_textbook_association_rating_path(ta.id)]}, {}, {class: "form-control", id: "rating-selection"} %>
+  <%= content_tag :div, "Rate this Book", class: "btn btn-info form-control", id: "rate-book" %>
 </div>
 <div class="btn-group">
   <%= blink_to 'Back', textbooks_path, class: "btn-default btn-sm" %>

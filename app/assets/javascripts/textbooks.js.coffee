@@ -4,8 +4,7 @@
 
 $ ->
   $('#rate-book').click ->
-    ta_id = $('#rate-selection').children("option").filter(":selected").val()
-    window.location = $('#rate-book').data('location').replace /-1/, ta_id
+    window.location = $('#rating-selection').children("option").filter(":selected").val()
 
 ###
 find_book = (isbn) ->
