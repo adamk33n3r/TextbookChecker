@@ -1,4 +1,7 @@
 module ApplicationHelper
+  def app_version
+    Textbookchecker::Application.config.app_version
+  end
   def link_to(name = nil, options = nil, html_options = nil, &block)
     super(name, options.nil? ? name : options, html_options, &block)
   end
