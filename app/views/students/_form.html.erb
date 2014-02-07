@@ -1,10 +1,10 @@
-<%= form_for @user, html: {class: "form", role: "form"} do |f| %>
-  <% if @user.errors.any? %>
+<%= form_for @student, html: {class: "form", role: "form"} do |f| %>
+  <% if @student.errors.any? %>
     <div class="alert alert-danger alert-dismissable">
       <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
       <h3><%= pluralize(@user.errors.count, "error") %>:</h3>
       <ul>
-        <% @user.errors.full_messages.each do |msg| %>
+        <% @student.errors.full_messages.each do |msg| %>
           <li><%= msg %></li>
         <% end %>
       </ul>

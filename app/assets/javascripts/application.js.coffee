@@ -42,7 +42,7 @@ $ ->
   for row in $("tr[data-href]")
     $(row).click (e) ->
       return if $(e.target).parent().hasClass("btn-group")
-      window.location = $(e.target).parent().data("href")
+      window.location = $(e.target).closest("tr").data("href")
 
   window.setTimeout (->
     ele = $(".alert-success")

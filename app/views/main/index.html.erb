@@ -8,5 +8,5 @@
 <%= link_to "Sign Up", signup_path, class: "btn btn-primary" %>
 <%= link_to :Login, login_path, class: "btn btn-success" %>
 <% else %>
-<p>Finished any courses? Help us out by <%= link_to "reviewing","#" %> your books!</p>
+<p>Finished any courses? Help us out by <%= link_to "reviewing", courses_path %> your books!</p>
 <% end %>

@@ -110,9 +110,9 @@ module ApplicationHelper
           end
           concat(content_tag(:td, class: "text-right") do
             content_tag(:div, class: "btn-group") do
-              link_to("Show", obj, class: "btn btn-xs btn-info") +
-              link_to("Edit", url_for([:edit, obj]), class: "btn btn-xs btn-warning") +
-                link_to("Delete", obj, class: "btn btn-xs btn-danger", method: :delete, data: { confirm: 'Are you sure?' })
+              link_to("Show " + obj.class.to_s, obj, class: "btn btn-xs btn-info") +
+              (current_student.admin? ? (link_to("Edit", url_for([:edit, obj]), class: "btn btn-xs btn-warning") +
+              link_to("Delete", obj, class: "btn btn-xs btn-danger", method: :delete, data: { confirm: 'Are you sure?' })) : "")
             end
           end)
         end)

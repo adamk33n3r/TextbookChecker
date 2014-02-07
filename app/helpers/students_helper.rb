@@ -15,7 +15,7 @@ module StudentsHelper
   
   def ensure_admin
     unless current_user.admin?
-      redirect_to root_path
+      redirect_to :back
       flash[:danger] = "You do not have that permission, son."
     end
   end
