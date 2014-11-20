@@ -33,6 +33,10 @@
   text-decoration: underline;
 }
 
+.field_with_errors {
+  background-color: $brand-danger;
+}
+
 // Changes hover color of navbar-dropdown to be primary like 'active' does.
 .dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus {
   text-decoration: none;
@@ -41,12 +45,12 @@
 }
 
 // Fixes rails adding field with errors div around all radios and making them stack
-.field_with_errors
+/*.field_with_errors
 {
   display: inline;
   + .field_with_errors { margin-left: 10px; }
   .field_with_errors { margin-left: 0; }
-}
+}*/
 
 // Adds Bootstrap to Devise messages
 .alert-notice {

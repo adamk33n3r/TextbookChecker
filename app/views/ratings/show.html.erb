@@ -1,3 +1,4 @@
 <!-- ratings/show -->
 <%= render @rating %>
+<%= link_to("Edit", edit_rating_path(@rating)) + " | " if student_has_permission? @rating %>
 <%= link_to "Other ratings for this book", textbook_association_ratings_path(@rating.textbook_association) %>

@@ -1,6 +1,7 @@
 class StudentsController < ApplicationController
   before_action :set_student, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_student!, except: [:new, :create]
+  before_action :ensure_admin, only: [:edit, :update, :destroy]
 
   # GET /students
   # GET /students.json

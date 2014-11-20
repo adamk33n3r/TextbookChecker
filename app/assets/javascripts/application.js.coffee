@@ -24,13 +24,12 @@ $ ->
       $($(e.target).parent().data('target')).collapse('toggle')
   for collapsable in $(".collapsable")
     $(collapsable).on 'hide.bs.collapse', (e) ->
-      i=e.target.id.slice(-1)
+      i=e.target.id.substring("collapse".length)
       $("#chevron"+i).removeClass("rotate90")
       $(e.target).parent().parent().children().toggleClass("show-cell hide-cell")
       $("#chevron"+i).addClass("rotate0")
     $(collapsable).on 'show.bs.collapse', (e) ->
-      console.log $(e.target).parent()
-      i=e.target.id.slice(-1)
+      i=e.target.id.substring("collapse".length)
       $("#chevron"+i).removeClass("rotate0")
       $(e.target).parent().parent().children().toggleClass("show-cell hide-cell")
       $("#chevron"+i).addClass("rotate90")

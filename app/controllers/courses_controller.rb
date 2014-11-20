@@ -1,12 +1,8 @@
 class CoursesController < ApplicationController
+  include StudentsHelper
   before_action :set_course, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_student!
-  before_action only: [:edit, :update, :destroy] do
-    unless current_student.admin?
-      flash[:danger] = "You are not allowed to do that!"
-      redirect_to :back
-    end
-  end
+  before_action :ensure_admin, only: [:edit, :update, :destroy]
 
   # GET /courses
   # GET /courses.json

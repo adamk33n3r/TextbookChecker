@@ -1,0 +1,11 @@
+<div class="container-fluid">
+  <div class="row col-sm-12">
+    <h3>
+      Rate That Textbook!<br/>
+      <small>Rating for <%= link_to @rating.textbook %> in <%= link_to @rating.professor.to_s+"'s", @rating.professor %> <%= link_to @rating.course %></small>
+    </h3>
+  </div>
+  <div class="row col-sm-12">
+    <%= render 'form' %>
+  </div>
+</div>

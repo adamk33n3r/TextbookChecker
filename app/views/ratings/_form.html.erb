@@ -1,8 +1,19 @@
 <%= bootstrap_form_for [@ta, @rating] do |f| %>
+<% if @rating.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@rating.errors.count, "error") %> prohibited this rating from being saved:</h2>
+
+      <ul>
+      <% @rating.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
   <%= f.radio_button_group :vote_id, Vote, label: "Vote" %>
   <%# f.collection_select(:vote_id, Vote.all, :id, :method) %>
   <%= f.text_area :content, label: "Review", size: "30x8" %>
-  <div class="button-group">
+  <div class="btn-group">
     <%= blink_to "Cancel", :back %>
     <%= f.submit class: "btn-primary" %>
   </div>

@@ -11,7 +11,12 @@ module TextbooksHelper
     textbook = Textbook.new
     textbook.title = book_info.volumeInfo.title
     textbook.authors = book_info.volumeInfo.authors.join(", ")
-    textbook.isbn = book_info.volumeInfo.industryIdentifiers[1].identifier
+    isbns = book_info.volumeInfo.industryIdentifiers
+    if isbns[0].type == "ISBN_13"
+      textbook.isbn = isbns[0].identifier
+    else
+      textbook.isbn = isbns[1].type
+    end
     textbook.description = book_info.volumeInfo.description
     textbook.price = book_info.saleInfo.retailPrice ? book_info.saleInfo.retailPrice.amount : 0
     textbook.published = Date.new book_info.volumeInfo.publishedDate.to_i
