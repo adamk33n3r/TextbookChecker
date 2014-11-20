@@ -2,7 +2,7 @@ class BootstrapFormBuilder < ActionView::Helpers::FormBuilder
 
   def text_field(label, args={})
     @template.content_tag(:div,
-      @template.label(@object_name, object, args[:label] ? args[:label] : label, class: "#{args[:no_label] ? "sr-only" : "control-label"}") +
+      @template.label(@object_name, label, args[:label] ? args[:label] : label, class: "#{args[:no_label] ? "sr-only" : "control-label"}") +
       super(label, args.merge(class: "form-control", placeholder: args[:label] ? args[:label] : label.to_s.humanize)),
     class: "form-group")
   end
