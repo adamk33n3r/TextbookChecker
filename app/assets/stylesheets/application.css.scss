@@ -76,16 +76,24 @@
 .rotate0 {
   -webkit-transition: -webkit-transform .25s linear;
   -webkit-transform: rotate(0deg);
+  -moz-transition: transform .25s linear;
+  -moz-transform: rotate(0deg);
+  transition: transform .25s linear;
+  transform: rotate(0deg);
 }
 
 .rotate90 {
   @extend .rotate0;
   -webkit-transform: rotate(90deg);
+  -moz-transform: rotate(90deg);
+  transform: rotate(90deg);
 }
 
 .rotate-90 {
   @extend .rotate0;
   -webkit-transform: rotate(-90deg);
+  -moz-transform: rotate(-90deg);
+  transform: rotate(-90deg);
 }
 
 //--------------------------------------------------Custom Alert-Group
