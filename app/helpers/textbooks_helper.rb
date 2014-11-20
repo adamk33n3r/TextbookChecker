@@ -15,7 +15,7 @@ module TextbooksHelper
     if isbns[0].type == "ISBN_13"
       textbook.isbn = isbns[0].identifier
     else
-      textbook.isbn = isbns[1].type
+      textbook.isbn = isbns[1].identifier
     end
     textbook.description = book_info.volumeInfo.description
     textbook.price = book_info.saleInfo.retailPrice ? book_info.saleInfo.retailPrice.amount : 0
