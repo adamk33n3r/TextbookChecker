@@ -9,7 +9,7 @@ Bundler.require(:default, Rails.env)
 module Textbookchecker
   class Application < Rails::Application
     
-    config.app_version = 0.03
+    config.app_version = 0.04
     
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
